@@ -1,4 +1,3 @@
-
 var nodemailer = require('nodemailer'),
 	mongoose = require('mongoose'),
 	config = require('../config/config'),
