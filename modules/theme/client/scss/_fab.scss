@@ -1,0 +1,49 @@
+.fab--position__bottom {
+  top: auto;
+  right: 20px;
+  bottom: 20px;
+  left: auto;
+  position: absolute;
+}
+
+.fab--position__top-right {
+  top: 155px;
+  right: 45px;
+  bottom: auto;
+  left: auto;
+  position: absolute;
+
+  }
+
+.fab--btn__responsive {
+
+  top: 155px;
+  right: 24px;
+  bottom: auto;
+  left: auto;
+  position: absolute;
+
+  @media (max-width: 767px) {
+
+          top: auto;
+          right: 16px;
+          bottom: 20px;
+          left: auto;
+          position: absolute;
+
+      }
+
+   @media (min-width:1025px) {
+
+    top: 160px;
+
+
+  }
+
+
+}
+
+.btn--fab.btn--default, .btn--raised.btn--default {
+  color: $textPrimaryColor;
+  background-color: $accentColor;
+}

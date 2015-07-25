@@ -1,0 +1,46 @@
+body {
+  background: $backgroundColor;
+  font-family: $font;
+}
+.content {
+  margin-top: 50px;
+}
+.undecorated-link:hover {
+  text-decoration: none;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+.ng-invalid.ng-dirty {
+  border-color: #FA787E;
+}
+.ng-valid.ng-dirty {
+  border-color: #78FA89;
+}
+
+
+
+.responsive__container {
+  margin: 0 auto;
+  width: 70%;
+  height: 750px;
+  z-index: 3;
+  margin-top: -60px;
+
+  @media (max-width: 767px) {
+
+    width: 80%;
+
+
+      }
+
+   @media (min-width:1025px) {
+
+     width: 70%;
+
+
+  }
+
+
+}

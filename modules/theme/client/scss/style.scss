@@ -1,0 +1,25 @@
+/* CONFIGURATION */
+
+/* Bodytext font */
+// $font: 'Roboto Condensed', sans-serif;
+$font: "proxima-nova", "proxima nova", "helvetica neue", "helvetica", "arial", sans-serif;
+
+/* Font for headings */
+$fontheadings: 'Roboto Condensed', sans-serif;
+
+/* Colors */
+$darkPrimaryColor:   #0097A7;
+$primaryColor:       #FFFFFF;
+$lightPrimaryColor:  #B2EBF2;
+$textPrimaryColor:   #FFFFFF;
+$accentColor:        #607D8B;
+$primaryTextColor:   #212121;
+$secondaryTextColor: #727272;
+$dividerColor:       #B6B6B6;
+$backgroundColor:	   #FFFFFF;
+
+/* IMPORT CSS FILES */
+@import "base";
+@import "fab";
+@import "nav";
+@import "toolbar";
