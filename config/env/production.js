@@ -1,6 +1,13 @@
 'use strict';
 
 module.exports = {
+	lookupTwitterStream: true,
+	sendStats: true,
+	htag: '#spicemas',
+	dates: {
+			start: '27/07/2015 00:00:00',
+			end: '22/08/2015 00:00:00'
+	},
 	secure: true,
 	port: process.env.PORT || 8443,
 	db: {
@@ -27,6 +34,8 @@ module.exports = {
 	twitter: {
 		clientID: process.env.TWITTER_KEY || 'CONSUMER_KEY',
 		clientSecret: process.env.TWITTER_SECRET || 'CONSUMER_SECRET',
+		access_token_key: process.env.TWITTER_TOKEN_KEY ||'TOKEN_KEY',
+		access_token_secret: process.env.TWITTER_KEY_SECRET || 'TOKEN_KEY_SECRET',
 		callbackURL: '/api/auth/twitter/callback'
 	},
 	google: {
