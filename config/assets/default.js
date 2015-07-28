@@ -14,7 +14,10 @@ module.exports = {
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
 				'public/lib/angular-file-upload/angular-file-upload.js',
-				'public/lib/angular-gravatar/build/angular-gravatar.js'
+				'public/lib/angular-gravatar/build/angular-gravatar.js',
+				'public/lib/jquery-knob/js/jquery.knob.js',
+				'public/lib/angular-knob/src/angular-knob.js',
+				'public/lib/angular-img-fallback/angular.dcb-img-fallback.min.js'
 			],
 			tests: ['public/lib/angular-mocks/angular-mocks.js']
 		},
