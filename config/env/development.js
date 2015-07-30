@@ -1,5 +1,7 @@
 'use strict';
 
+var defaultEnvConfig = require('./default');
+
 module.exports = {
 	lookupTwitterStream: true,
 	sendStats: false,
@@ -8,7 +10,9 @@ module.exports = {
 		options: {
 			user: '',
 			pass: ''
-		}
+		},
+		// Enable mongoose debug mode
+		debug: process.env.MONGODB_DEBUG || false
 	},
 	log: {
 		// Can specify one of 'combined', 'common', 'dev', 'short', 'tiny'
@@ -20,7 +24,7 @@ module.exports = {
 		}
 	},
 	app: {
-		title: 'MEAN.JS - Development Environment'
+		title: defaultEnvConfig.app.title + ' - Development Environment'
 	},
 	facebook: {
         clientID: process.env.FACEBOOK_ID || 'APP_ID',
