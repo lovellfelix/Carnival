@@ -6,7 +6,8 @@ angular.module('pictures').run(['Menus',
 		// Add the Pictures dropdown item
 		Menus.addMenuItem('topbar', {
 			title: 'Pictures',
-			state: 'pictures',
+			state: 'pictures.list',
+			icon: 'picture',
 			type: 'dropdown'
 		});
 
