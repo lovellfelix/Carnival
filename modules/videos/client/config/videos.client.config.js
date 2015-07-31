@@ -8,7 +8,7 @@ angular.module('videos').run(['Menus',
             title: 'Videos',
             isPublic: true,
             state: 'videos.slick',
-            icon: 'facetime-video',
+            icon: 'video',
             position: 3
         });
     }

@@ -7,7 +7,7 @@ angular.module('tweets').run(['Menus',
 		Menus.addMenuItem('topbar', {
 			title: 'Tweets',
 			state: 'tweets.list',
-			icon: 'asterisk',
+			icon: 'pound-box',
 			type: 'dropdown'
 		});
 
