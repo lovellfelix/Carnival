@@ -1,25 +1,43 @@
 <section data-ng-controller="VideosController" data-ng-init="find()">
 
+
+  <div style="position: fixed; top: 0; width: 100%; height: 100%; z-index: -1;">
+
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item"
+                data-ng-src="{{videos[videoIframe.current].source | trusted}}"></iframe>
+    </div>
+
+    <video id="video" controls="" preload="none" poster="http://media.w3.org/2010/05/sintel/poster.png" style="width:100%; height:100%">
+      <source id="mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
+      <source id="webm" src="http://media.w3.org/2010/05/sintel/trailer.webm" type="video/webm">
+      <source id="ogv" src="http://media.w3.org/2010/05/sintel/trailer.ogv" type="video/ogg">
+      <p>Your user agent does not support the HTML5 Video element.</p>
+    </video>
+</div>
+
+
+
+
     <div data-ng-show="!videos.$resolved || videos.length">
         <br/>
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-12">
-                <!-- 16:9 aspect ratio -->
                 <div class="embed-responsive embed-responsive-16by9">
                     <iframe class="embed-responsive-item"
                             data-ng-src="{{videos[videoIframe.current].source | trusted}}"></iframe>
                 </div>
             </div>
-        </div>
-
+        </div> -->
+<!-- 
         <div class="list-group">
             <div class="list-group-item vn-box-shadow">
                 <h3 class="vn-no-margin"><strong>{{videos[videoIframe.current].name}}</strong><br/>
                     <small> {{videos[videoIframe.current].description}}</small>
                 </h3>
             </div>
-        </div>
+        </div> -->
 
         <div class="row">
             <div data-ng-repeat="video in videos">
