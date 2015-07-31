@@ -8,7 +8,8 @@ angular.module('tweets').run(['Menus',
 			title: 'Tweets',
 			state: 'tweets.list',
 			icon: 'pound-box',
-			type: 'dropdown'
+			type: 'dropdown',
+			position: 3
 		});
 
 		// Add the dropdown list item

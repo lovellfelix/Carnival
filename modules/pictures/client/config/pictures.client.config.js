@@ -8,7 +8,8 @@ angular.module('pictures').run(['Menus',
 			title: 'Pictures',
 			state: 'pictures.list',
 			icon: 'file-image',
-			type: 'dropdown'
+			type: 'dropdown',
+			position: 2
 		});
 
 		// Add the dropdown list item

@@ -6,8 +6,9 @@ angular.module('posts').run(['Menus',
 		// Add the Posts dropdown item
 		Menus.addMenuItem('topbar', {
 			title: 'Posts',
-			state: 'posts',
-			type: 'dropdown'
+			state: 'posts.list',
+			icon: 'google-circles-extended',
+			position: 1
 		});
 
 		// Add the dropdown list item
