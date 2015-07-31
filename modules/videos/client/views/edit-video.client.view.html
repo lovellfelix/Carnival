@@ -1,0 +1,50 @@
+<section data-ng-controller="VideosController" data-ng-init="findOne()">
+    <div class="page-header">
+        <vn-first-char-strong input-text="Video anpassen"></vn-first-char-strong>
+        <h5>Es kann nur der Name und die Beschreibung des Videos angepasst werden.</h5>
+    </div>
+    <div class="col-md-12">
+        <form class="form-horizontal" data-ng-submit="update()" novalidate>
+            <fieldset>
+                <div class="form-group">
+                    <label class="control-label" for="name">Name</label>
+
+                    <div class="controls">
+                        <input type="text" data-ng-model="video.name" id="name" class="form-control" placeholder="Name"
+                               required>
+                    </div>
+
+                    <label class="control-label" for="description">Beschreibung</label>
+
+                    <div class="controls">
+                        <input type="text" data-ng-model="video.description" id="description" class="form-control"
+                               placeholder="Beschreibung" required>
+                    </div>
+
+                    <label class="control-label" for="source">Source</label>
+
+                    <div class="controls" data-ng-disabled="true">
+                        <input type="text" data-ng-model="video.source" id="source" class="form-control"
+                               placeholder="Youtube embedded URL"  data-ng-disabled="true">
+                    </div>
+
+                    <label class="control-label" for="sourceImg">Vorschau Bild</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="video.sourceImg" id="sourceImg" class="form-control"
+                               placeholder="Youtube thumbnail URL"  data-ng-disabled="true">
+                    </div>
+                    <br/>
+                    <img class="media-object img-rounded" data-ng-src="{{video.sourceImg}}">
+                    <br/>
+
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Update" class="btn btn-default">
+                </div>
+                <div data-ng-show="error" class="text-danger">
+                    <strong data-ng-bind="error"></strong>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</section>

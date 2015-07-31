@@ -1,0 +1,48 @@
+<section data-ng-controller="VideosController" data-ng-init="find()">
+    <div class="page-header">
+        <h2><strong>V</strong>ideos</h2>
+    </div>
+
+    <div class="list-group">
+        <div data-ng-repeat="video in videos" class="list-group-item">
+
+            <div class="media">
+                <a class="pull-left">
+                    <img class="media-object img-rounded" data-ng-src={{video.sourceImg}}>
+                </a>
+                <h4 class="media-heading" data-ng-bind="video.name"></h4>
+                <h5 data-ng-bind="video.description"></h5>
+            </div>
+
+
+            <div class="pull-right" data-ng-show="authentication.user.roles.indexOf('admin') > -1">
+                <a class="btn btn-primary" href="/#!/videos/{{video._id}}/edit">
+                    <i class="glyphicon glyphicon-edit"></i>
+                </a>
+                <a class="btn btn-primary" data-ng-click="remove(video);">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </a>
+            </div>
+            <br/>
+
+            <small class="list-group-item-text">
+                Das Video wurde am
+                <span data-ng-bind="video.created | date:'dd.MM.yyyy'"></span>
+                um
+                <span data-ng-bind="video.created | date:'HH:mm'"></span>
+                Uhr von
+                <span data-ng-bind="video.user.displayName"></span>
+                erstellt.
+            </small>
+        </div>
+    </div>
+
+    <div data-ng-show="error" class="text-danger">
+        <strong data-ng-bind="error"></strong>
+    </div>
+
+    <div class="alert alert-warning text-center" data-ng-hide="!videos.$resolved || videos.length">
+        Es ist noch kein Video vorhanden -  <a href="/#!/videos/create">Video anlegen</a>?
+    </div>
+
+</section>

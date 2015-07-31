@@ -1,0 +1,63 @@
+<section data-ng-controller="VideosController">
+    <div class="page-header">
+        <vn-first-char-strong input-text="Video anlegen"></vn-first-char-strong>
+    </div>
+    <div class="col-md-12">
+        <form class="form-horizontal" data-ng-submit="decodeYoutubeLink()">
+            <fieldset>
+                <div class="form-group" >
+                    <label class="control-label" for="name">Name</label>
+
+                    <div class="controls">
+                        <input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name"
+                               required  data-ng-disabled="videoPreview">
+                    </div>
+                    <label class="control-label" for="description">Beschreibung</label>
+
+                    <div class="controls">
+                        <input type="text" data-ng-model="description" id="description" class="form-control"
+                               placeholder="Beschreibung" required  data-ng-disabled="videoPreview">
+                    </div>
+                    <label class="control-label" for="youTubeCode">Youtube Code</label>
+
+                    <div class="controls">
+                        <input type="text" data-ng-model="youTubeCode" id="youTubeCode" class="form-control"
+                               placeholder="https://www.youtube.com/watch?v=MayFPcrHj8o" required  data-ng-disabled="videoPreview">
+                    </div>
+
+                    <label class="control-label" for="source" data-ng-show="videoPreview">Source</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="source" id="source" class="form-control"
+                               placeholder="decoded embedded code" data-ng-show="videoPreview"  data-ng-disabled="videoPreview">
+                    </div>
+                    <label class="control-label" for="sourceImg" data-ng-show="videoPreview">Vorschau Bild</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="sourceImg" id="sourceImg" class="form-control"
+                               placeholder="decoded embedded code" data-ng-show="videoPreview"  data-ng-disabled="videoPreview">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Vorschau..." class="btn btn-default"  data-ng-disabled="videoPreview">
+                    <button class="btn btn-default" type="submit" data-ng-click="create()" data-ng-disabled="!videoPreview">Video anlegen</button>
+                    <button class="btn btn-default" type="submit" data-ng-click="cancel()" data-ng-disabled="!videoPreview">abbrechen</button>
+                </div>
+                <div data-ng-show="error" class="text-danger">
+                    <strong data-ng-bind="error"></strong>
+                </div>
+            </fieldset>
+        </form>
+
+        <!--BOOTSTRAP THIS-->
+        <!-- container for videoPreview -->
+        <div data-ng-show="videoPreview" class="vn-video-thumbnail">
+            <h4>Vorschau:</h4>
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item"
+                        data-ng-src="{{source | trusted}}"></iframe>
+            </div>
+            <h4>Vorschaubild</h4>
+            <img class="media-object img-rounded" data-ng-src="{{sourceImg}}">
+            <br/>
+        </div>
+    </div>
+</section>

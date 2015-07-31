@@ -89,6 +89,7 @@ angular.module('core').service('Menus', [
       this.menus[menuId].items.push({
         title: options.title || '',
         state: options.state || '',
+        icon: options.icon || '',
         type: options.type || 'item',
         class: options.class,
         isPublic: ((options.isPublic === null || typeof options.isPublic === 'undefined') ? this.menus[menuId].isPublic : options.isPublic),

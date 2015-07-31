@@ -6,7 +6,8 @@ angular.module('tweets').run(['Menus',
 		// Add the Tweets dropdown item
 		Menus.addMenuItem('topbar', {
 			title: 'Tweets',
-			state: 'tweets',
+			state: 'tweets.list',
+			icon: 'pound-box',
 			type: 'dropdown'
 		});
 
