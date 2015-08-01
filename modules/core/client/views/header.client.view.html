@@ -48,7 +48,6 @@
 		</ul>
 	</nav>
 
-
 </div>
 
 
@@ -63,10 +62,10 @@
 
 			<ul class="nav navbar-nav">
 
-				<li data-ng-repeat="item in menu.items" data-ui-sref-active="active">
+				<li data-ng-repeat="item in menu.items| orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);" data-ui-sref-active="active">
 
 					<a data-ui-sref="{{item.state}}">
-						<span class="small-nav" data-toggle="tooltip" data-placement="right" title="Home">
+						<span class="small-nav" tooltip="{{item.title}}" tooltip-placement="right" >
 							 <i class="mdi mdi-{{item.icon}}"></i>
 						</span>
 					</a>

@@ -6,9 +6,9 @@ angular.module('videos').run(['Menus',
         // Add the Video dropdown item
         Menus.addMenuItem('topbar', {
             title: 'Videos',
-            isPublic: true,
             state: 'videos.slick',
             icon: 'video',
+            isPublic: true,
             position: 3
         });
     }

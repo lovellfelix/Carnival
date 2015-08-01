@@ -182,3 +182,6 @@ a:hover .header--nav__profile-image {
 .navbar-twitch.open ~ .navbar-twitch-toggle > .nav-close {
 	display: inline-block;
 }
+.navbar {
+    margin-bottom: 0 !important;
+}
