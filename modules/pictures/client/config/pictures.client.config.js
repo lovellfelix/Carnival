@@ -9,13 +9,15 @@ angular.module('pictures').run(['Menus',
 			state: 'pictures.list',
 			icon: 'file-image',
 			type: 'dropdown',
+			isPublic: true,
 			position: 2
 		});
 
 		// Add the dropdown list item
 		Menus.addSubMenuItem('topbar', 'pictures', {
 			title: 'List Pictures',
-			state: 'pictures.list'
+			state: 'pictures.list',
+				isPublic: true
 		});
 
 		// Add the dropdown create item

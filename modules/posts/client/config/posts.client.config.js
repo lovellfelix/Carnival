@@ -8,7 +8,8 @@ angular.module('posts').run(['Menus',
 			title: 'Posts',
 			state: 'posts.list',
 			icon: 'google-circles-extended',
-			position: 1
+			position: 1,
+			isPublic: true
 		});
 
 		// Add the dropdown list item

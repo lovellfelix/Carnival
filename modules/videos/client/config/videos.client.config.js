@@ -9,7 +9,7 @@ angular.module('videos').run(['Menus',
             state: 'videos.slick',
             icon: 'video',
             isPublic: true,
-            position: 2
+            position: 3
         });
     }
 ]);
