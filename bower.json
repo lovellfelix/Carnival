@@ -14,7 +14,8 @@
     "angular-file-upload": "1.1.5",
     "angular-gravatar": "~0.4.0",
     "mdi": "~1.1.70",
-    "angular-timeago": "~0.2.0"
+    "angular-timeago": "~0.2.0",
+    "ngInfiniteScroll": "~1.2.1"
   },
   "resolutions": {
     "angular": "~1.3"
