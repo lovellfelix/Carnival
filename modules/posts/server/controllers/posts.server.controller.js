@@ -195,9 +195,19 @@ exports.uploadImage = function (req, res) {
     var pictureNameFull = req.files.file.originalname;
     var pictureName = pictureNameFull.substr(0, pictureNameFull.lastIndexOf('.'));
     var pictureExtension = pictureNameFull.substr(pictureNameFull.lastIndexOf('.') + 1);
-    var picturePath = './modules/posts/client/img/';
-    var pictureSavePath = './modules/posts/img/';
+
+    var user_name = req.user.username;
+
+    var picturePath = './uploads/img/' + user_name+ '/';
+    var pictureSavePath = './uploads/img/' + user_name+ '/';
     var pictureBuffer = req.files.file.buffer;
+
+    try {
+        fs.mkdirSync(pictureSavePath);
+    } catch (e) {
+        if (e.code !== 'EEXIST') throw e;
+    }
+
 
     async.waterfall([
         function openLwip(openLwipCallback) {
