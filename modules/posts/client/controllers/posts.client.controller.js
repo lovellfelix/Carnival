@@ -85,21 +85,15 @@ angular.module('posts').controller('PostsController', ['$scope',  '$state', '$st
 						$scope.uploader.queue[0].formData.push({
 								name: $scope.name
 						});
-
 						// set loadin and start upload
 						$scope.loading = true;
 						$scope.uploader.uploadAll();
-
-						// close the modal
-						//$scope.modalInstance.close();
-						//$modalInstance.close();
 						// reload view
 						$state.reload();
 
 				}
 
 		};
-
 
 
 		$scope.loadPosts = function () {
@@ -122,31 +116,28 @@ angular.module('posts').controller('PostsController', ['$scope',  '$state', '$st
 
 
 
-		// Create new Post
-		$scope.create = function() {
-			// Create new Post object
-			var post = new Posts ({
-				name: this.name,
-				picture: this.picture
-			});
-
-			post.$save(function(response) {
-				// $location.path('posts/' + response._id);
-
-				 $location.path('/');
-				 				// Clear form fields
-			 				$scope.name = '';
-							$scope.picture = '';
-
-					// close the modal
-					//modal.$close();
-					// reload view
-					$state.reload();
-
-			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
-			});
-		};
+		// // Create new Post
+		// $scope.create = function() {
+		// 	// Create new Post object
+		// 	var post = new Posts ({
+		// 		name: this.name,
+		// 	});
+		//
+		// 	post.$save(function(response) {
+		// 		// $location.path('posts/' + response._id);
+		//
+		// 		 $location.path('/');
+		// 		 				// Clear form fields
+		// 	 				$scope.name = '';
+		// 			// close the modal
+		// 			//modal.$close();
+		// 			// reload view
+		// 			$state.reload();
+		//
+		// 	}, function(errorResponse) {
+		// 		$scope.error = errorResponse.data.message;
+		// 	});
+		// };
 
 		// Remove existing Post
 		$scope.remove = function( post ) {
