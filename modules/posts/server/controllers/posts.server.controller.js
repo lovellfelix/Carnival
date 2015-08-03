@@ -116,7 +116,7 @@ exports.delete = function (req, res) {
             /* jshint loopfunc:true */
             unlinkPicture: function (callback) {
                 // unlink the picture source - for the path the client needs to be added (done with replace via split join)
-                fs.unlink(this.pictureSource.split('pictures').join('pictures/client'), function (error) {
+                fs.unlink(this.pictureSource.split('posts').join('posts/client'), function (error) {
                     if (error) {
                         callback(error);
                     } else {
@@ -195,8 +195,8 @@ exports.uploadImage = function (req, res) {
     var pictureNameFull = req.files.file.originalname;
     var pictureName = pictureNameFull.substr(0, pictureNameFull.lastIndexOf('.'));
     var pictureExtension = pictureNameFull.substr(pictureNameFull.lastIndexOf('.') + 1);
-    var picturePath = './modules/pictures/client/img/';
-    var pictureSavePath = './modules/pictures/img/';
+    var picturePath = './modules/posts/client/img/';
+    var pictureSavePath = './modules/posts/img/';
     var pictureBuffer = req.files.file.buffer;
 
     async.waterfall([
