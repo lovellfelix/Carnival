@@ -5,6 +5,10 @@ angular.module('posts').config(['$stateProvider',
 	function($stateProvider) {
 		// Posts state routing
 		$stateProvider.
+		state('stream', {
+			url: '/',
+			templateUrl: 'modules/posts/views/stream.client.view.html'
+		}).
 		state('posts', {
 			abstract: true,
 			url: '/posts',
