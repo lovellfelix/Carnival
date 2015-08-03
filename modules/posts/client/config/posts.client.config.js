@@ -5,8 +5,8 @@ angular.module('posts').run(['Menus',
 	function(Menus) {
 		// Add the Posts dropdown item
 		Menus.addMenuItem('topbar', {
-			title: 'Posts',
-			state: 'posts.list',
+			title: 'Stream',
+			state: 'stream',
 			icon: 'google-circles-extended',
 			position: 1,
 			isPublic: true

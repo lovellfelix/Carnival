@@ -1,0 +1,80 @@
+<section data-ng-controller="PostsController" data-ng-init="find()">
+
+<!-- <div class="col-md-4">
+		<form class="inline">
+				<div class="input-group">
+						<input type="text" class="form-control" data-ng-model="searchBox" placeholder="Search moments">
+						<span class="input-group-btn">
+								<button class="btn btn-md btn-default">
+										<span class="glyphicon glyphicon-search"></span>
+								</button>
+						</span>
+				</div>
+		</form>
+</div>
+<br />
+<br /> -->
+
+<div class="row">
+				<div infinite-scroll="loadPosts()" infinite-scroll-distance="3">
+					<span data-ng-repeat="post in filteredPosts | filter: {title: searchBox}" >
+						 <div class="col-sm-6 col-md-4" >
+            <div class="card" >
+                <div class="card-image">
+                    <img class="img-responsive" data-ng-src={{post.sizes[1].source}}>
+                </div>
+                <div class="card-content">
+									<div class="media">
+	  <div class="media-left">
+	    <a href="#">
+	      <img class="media-object img-rounded" data-ng-src="{{post.user.profileImageURL}}" alt="{{post.user.displayName}}" height="28" width="28">
+	    </a>
+	  </div>
+	  <div class="media-body">
+			<span class="media-heading text-capitalize" data-ng-bind="post.user.displayName | lowercase"></span>
+			<a data-ng-href="/posts/{{post._id}}"><span class="pull-right" data-ng-bind="post.created | timeAgo"></span></a><br>
+			<span class="text-muted" data-ng-bind="post.user.username"></span>
+	  </div>
+	</div>
+										<p class="" data-ng-bind="post.name">...</p>
+                    <button type="button" id="show" class="btn btn-custom pull-right" aria-label="Left Align">
+                        <i class="fa fa-ellipsis-v"></i>
+                    </button>
+                </div>
+                <div class="card-action">
+                    <a href="#" target="new_blank" ><i class="mdi mdi-heart-outline"></i> 10</a>
+                    <a href="#" target="new_blank" class="pull-right"><i class="mdi mdi-share"></i> </a>
+                </div>
+
+								<!-- card actions -->
+                <div class="card-reveal">
+                    <span class="card-title">Card Title</span> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                </div><!-- card reveal -->
+            </div>
+        </div>
+				</span>
+			</div>
+
+			</div>
+
+			<br />
+			<br />
+
+
+
+    <!-- <div class="list-group">
+        <a data-ng-repeat="post in posts" data-ng-href="/#!/posts/{{post._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="post.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="post.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="post.name"></h4>
+        </a>
+    </div> -->
+    <div class="alert alert-warning text-center" data-ng-hide="!posts.$resolved || posts.length">
+    	No Posts yet, why don't you <a href="/#!/posts/create">create one</a>?
+    </div>
+</section>

@@ -11,7 +11,17 @@
 				<a ng-switch-default data-ui-sref="{{item.state}}" data-ng-bind="item.title"></a>
 			</li>
 		</ul> -->
+
+		<div class="navbar-form navbar-right" data-ng-controller="PostsController">
+
+	<button ng-click="openUploader()"  class="btn btn-success" type="submit">
+		<i class="mdi mdi-share"></i>
+		Share</button>
+</div>
+
+
 		<ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
+
 			<li data-ui-sref-active="active">
 				<a data-ui-sref="authentication.signup">Sign Up</a>
 			</li>
@@ -54,7 +64,7 @@
 <div class="navbar navbar-inverse navbar-twitch" role="navigation" data-ng-controller="HeaderController">
 	<div class="container">
 		<div class="navbar-header">
-					<a class="navbar-brand" data-ui-sref="home">
+					<a class="navbar-brand" data-ui-sref="stream">
 	      <i class="mdi mdi-package"></i>
 						 </a>
 		</div>

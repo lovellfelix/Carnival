@@ -4,7 +4,7 @@
 'use strict';
 
 
-angular.module('pictures').directive('ngThumb', ['$window', function ($window) {
+angular.module('posts').directive('ngThumb', ['$window', function ($window) {
     var helper = {
         support: !!($window.FileReader && $window.CanvasRenderingContext2D),
         isFile: function (item) {

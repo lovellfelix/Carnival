@@ -15,7 +15,9 @@ module.exports = {
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
 				'public/lib/angular-file-upload/angular-file-upload.js',
-				'public/lib/angular-gravatar/build/angular-gravatar.js'
+				'public/lib/angular-gravatar/build/angular-gravatar.js',
+				'public/lib/angular-timeago/dist/angular-timeago.js',
+				'public/lib/ngInfiniteScroll/build/ng-infinite-scroll.js'
 			],
 			tests: ['public/lib/angular-mocks/angular-mocks.js']
 		},
