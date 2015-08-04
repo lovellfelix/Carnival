@@ -9,7 +9,7 @@ var _ = require('lodash'),
     async = require('async'),
     mongoose = require('mongoose'),
     lwip = require('lwip'),
-    md5 = require('MD5'),
+    md5 = require('md5'),
     Post = mongoose.model('Post'),
     errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
