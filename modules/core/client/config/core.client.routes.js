@@ -2,10 +2,10 @@
 
 // Setting up route
 angular.module('core').config(['$stateProvider', '$urlRouterProvider',
-	function($stateProvider, $urlRouterProvider) {
+  function ($stateProvider, $urlRouterProvider) {
 
-		// Redirect to 404 when route not found
-		$urlRouterProvider.otherwise('not-found');
+    // Redirect to 404 when route not found
+    $urlRouterProvider.otherwise('not-found');
 
 		// Home state routing
 		$stateProvider.

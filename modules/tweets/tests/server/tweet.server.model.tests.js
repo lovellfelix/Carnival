@@ -27,15 +27,15 @@ describe('Tweet Model Unit Tests:', function() {
 			password: 'password'
 		});
 
-		user.save(function() { 
+		user.save(function() {
 			tweet = new Tweet({
 				name: 'Tweet Name',
 				user: user
 			});
 
-			done();
-		});
-	});
+      done();
+    });
+  });
 
 	describe('Method Save', function() {
 		it('should be able to save without problems', function(done) {
@@ -45,7 +45,7 @@ describe('Tweet Model Unit Tests:', function() {
 			});
 		});
 
-		it('should be able to show an error when try to save without name', function(done) { 
+		it('should be able to show an error when try to save without name', function(done) {
 			tweet.name = '';
 
 			return tweet.save(function(err) {
@@ -55,11 +55,11 @@ describe('Tweet Model Unit Tests:', function() {
 		});
 	});
 
-	afterEach(function(done) { 
+	afterEach(function(done) {
 		Tweet.remove().exec(function(){
 			User.remove().exec(function(){
 				done();
-			});	
+			});
 		});
 	});
 });
