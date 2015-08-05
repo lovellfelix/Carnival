@@ -192,10 +192,9 @@ exports.uploadImage = function (req, res) {
     post.fileName = req.files.file.originalname;
 
     var pictureNameFull = req.files.file.originalname;
-    var pictureName = md5(Date.now());
-    var pictureExtension = pictureNameFull.substr(pictureNameFull.lastIndexOf('.') + 1);
-
     var user_name = req.user.username;
+    var pictureName = md5(user_name) +'_'+ md5(+Date.now() );
+    var pictureExtension = pictureNameFull.substr(pictureNameFull.lastIndexOf('.') + 1);
 
     var picturePath = './uploads/img/' + user_name+ '/';
     var pictureSavePath = './uploads/img/' + user_name+ '/';
