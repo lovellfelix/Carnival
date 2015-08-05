@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 var _ = require('lodash'),
-    fs = require('fs'),
+    fs = require('fs-extra'),
     path = require('path'),
     async = require('async'),
     mongoose = require('mongoose'),
