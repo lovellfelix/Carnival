@@ -201,7 +201,7 @@ exports.uploadImage = function (req, res) {
     var pictureBuffer = req.files.file.buffer;
 
     try {
-        fs.mkdirSync(pictureSavePath);
+        fs.mkdirsSync(pictureSavePath);
     } catch (e) {
         if (e.code !== 'EEXIST') throw e;
     }
