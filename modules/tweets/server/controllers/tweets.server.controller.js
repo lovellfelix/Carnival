@@ -140,7 +140,8 @@ function createTweetFromTwitterData(data) {
 		    hashtags : [],
 		    user_mentions :  [],
 				media: [],
-				urls: []
+				urls: [],
+				extended_entities: []
 		},
 		to: null,
 		from: data.user.screen_name

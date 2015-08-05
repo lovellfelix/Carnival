@@ -39,7 +39,8 @@ var TweetSchema = new Schema({
 	hashtags : { type : Array , default : [] },
 	user_mentions :  { type : Array , default : [] },
 	media :  { type : Array , default : [] },
-	urls :  { type : Array , default : [] }
+	urls :  { type : Array , default : [] },
+	extended_entities :  { type : Array , default : [] }
     },
     to: {
         type: String,
