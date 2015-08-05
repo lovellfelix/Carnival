@@ -35,12 +35,13 @@ var TweetSchema = new Schema({
          screen_name: { type: String, default: '', trim: true },
          profile_image_url: { type: String, default: '', trim: true }
     },
+	extended_entities: {
+		media: { type : Array , default : [] }
+	},
   entities: {
 	hashtags : { type : Array , default : [] },
-	user_mentions :  { type : Array , default : [] },
-	media :  { type : Array , default : [] },
-	urls :  { type : Array , default : [] },
-	extended_entities :  { type : Array , default : [] }
+	urls : { type : Array , default : [] },
+	user_mentions :  { type : Array , default : [] }
     },
     to: {
         type: String,

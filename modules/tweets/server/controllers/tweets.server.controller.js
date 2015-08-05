@@ -136,12 +136,13 @@ function createTweetFromTwitterData(data) {
 		    screen_name: data.user.screen_name,
 		    profile_image_url: data.user.profile_image_url
 		},
+		extended_entities: {
+				media: data.extended_entities.media
+		},
 		entities: {
 		    hashtags : [],
-		    user_mentions :  [],
-				media: [],
-				urls: [],
-				extended_entities: []
+				urls: data.entities.urls,
+		    user_mentions :  []
 		},
 		to: null,
 		from: data.user.screen_name
@@ -163,6 +164,7 @@ function createTweetFromTwitterData(data) {
 	if (foundRegExFrom !== null) {
 		tweet.from = foundRegExFrom[1].toLowerCase();
         }
+	// var media = data.extended_entities.media.length;
 
 	var hashtags = data.entities.hashtags.length;
 	if (hashtags > 0) {
