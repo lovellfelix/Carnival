@@ -157,7 +157,7 @@ exports.delete = function (req, res) {
  * List of Pictures
  */
 exports.list = function (req, res) {
-    Post.find().sort('-created').exec(function (err, posts) {
+    Post.find().sort('-created_at').exec(function (err, posts) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
