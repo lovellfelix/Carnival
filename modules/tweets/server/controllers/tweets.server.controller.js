@@ -126,7 +126,9 @@ var twit = new twitter({
 });
 
 function createTweetFromTwitterData(data) {
+    if (process.env.NODE_ENV === 'development') {
     console.log(data);
+    }
 		var tweet = new Tweet({
 		created_at: new Date(Date.parse(data.created_at)),
 		id: data.id,
