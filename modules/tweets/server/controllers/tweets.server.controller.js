@@ -450,14 +450,20 @@ exports.getInformations = function(req, res) {
 
 var runStreamLookup = function() {
     twit.stream('statuses/filter', {track:config.htag}, function(stream) {
-
+        
+        if (process.env.NODE_ENV === 'development') {
         console.log('start stream on : ' + config.htag);
+        }
+
         stream.on('data', function(data) {
             console.log('@' + data.user.screen_name + ' : ' + data.user.name);
             if (!(data.retweeted_status !== undefined && data.retweeted_status.retweet_count !== undefined)) {
                 createTweetFromTwitterDataAndSave(data);
             } else {
+            
+            if (process.env.NODE_ENV === 'development') {
                 console.log('Is a rt => not save');
+            }
 	    }
         });
         stream.on('end', function(data) {
@@ -474,7 +480,11 @@ var runStreamLookup = function() {
 if ( config.lookupTwitterStream ) {
     runStreamLookup();
 } else {
+ 
+ if (process.env.NODE_ENV === 'development') {
     console.log('stream off : ' + config.htag);
+}
+
 }
 
 
