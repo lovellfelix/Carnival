@@ -15,28 +15,34 @@
 <br />
 <br /> -->
 
+ <!-- <div infinite-scroll="loadMoments()" infinite-scroll-distance="3">
+        <div class="col-centered" masonry preserve-order>
+            <div class="gutter-sizer"></div>
+            <div class="thumbnail masonry-brick col-lg-2 col-md-4 col-sm-12"
+                 data-ng-repeat="moment in filteredMoments | filter: {title: searchBox}"> -->
+
 <div class="row">
 				<div infinite-scroll="loadPosts()" infinite-scroll-distance="3">
 					<span data-ng-repeat="post in filteredPosts | filter: {title: searchBox}" >
 						 <div class="col-sm-6 col-md-4" >
             <div class="card" >
                 <div class="card-image">
-                    <img class="img-responsive" data-ng-src={{post.sizes[1].source}}>
+                    <img class="img-responsive" data-ng-src={{post.extended_entities.media[0].media_url}} height="376" width="600">
                 </div>
                 <div class="card-content">
 									<div class="media">
 	  <div class="media-left">
 	    <a href="#">
-	      <img class="media-object img-rounded" data-ng-src="{{post.user.profileImageURL}}" alt="{{post.user.displayName}}" height="28" width="28">
+	      <img class="media-object img-rounded" data-ng-src="{{post.tuser.profile_image_url}}" alt="{{post.user.displayName}}" height="28" width="28">
 	    </a>
 	  </div>
 	  <div class="media-body">
-			<span class="media-heading text-capitalize" data-ng-bind="post.user.displayName | lowercase"></span>
-			<a data-ng-href="/posts/{{post._id}}"><span class="pull-right" data-ng-bind="post.created | timeAgo"></span></a><br>
-			<span class="text-muted" data-ng-bind="post.user.username"></span>
+			<span class="media-heading text-capitalize" data-ng-bind="post.tuser.name | lowercase"></span>
+			<a data-ng-href="/posts/{{post._id}}"><span class="pull-right" data-ng-bind="post.created_at | timeAgo"></span></a><br>
+			<span class="text-muted" data-ng-bind="post.tuser.screen_name"></span>
 	  </div>
 	</div>
-										<p class="" data-ng-bind="post.name">...</p>
+										<p class="" data-ng-bind="post.text">...</p>
                     <button type="button" id="show" class="btn btn-custom pull-right" aria-label="Left Align">
                         <i class="fa fa-ellipsis-v"></i>
                     </button>

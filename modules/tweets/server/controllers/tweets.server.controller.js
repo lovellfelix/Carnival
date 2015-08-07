@@ -4,7 +4,8 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-	Tweet = mongoose.model('Tweet'),
+	Tweet = mongoose.model('Post'),
+	User = mongoose.model('User'),
 	_ = require('lodash'),
 	path = require('path'),
 	twitter = require('twitter'),
@@ -130,7 +131,7 @@ function createTweetFromTwitterData(data) {
 		created_at: new Date(Date.parse(data.created_at)),
 		id: data.id,
 		text: data.text,
-		user: {
+		tuser: {
 		    id: data.user.id,
 		    name: data.user.name,
 		    screen_name: data.user.screen_name,
