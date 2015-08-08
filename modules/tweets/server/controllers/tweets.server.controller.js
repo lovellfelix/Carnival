@@ -139,13 +139,15 @@ function createTweetFromTwitterData(data) {
 		    screen_name: data.user.screen_name,
 		    profile_image_url: data.user.profile_image_url
 		},
+		favorite_count: data.favorite_count,
 		extended_entities: {
 				media: data.extended_entities.media
 		},
 		entities: {
 		    hashtags : [],
-				urls: data.entities.urls,
-		    user_mentions :  []
+		    user_mentions :  [],
+				media: [],
+				urls: []
 		},
 		to: null,
 		from: data.user.screen_name
@@ -456,7 +458,7 @@ exports.getInformations = function(req, res) {
 
 var runStreamLookup = function() {
     twit.stream('statuses/filter', {track:config.htag}, function(stream) {
-        
+
         if (process.env.NODE_ENV === 'development') {
         console.log('start stream on : ' + config.htag);
         }
@@ -466,7 +468,7 @@ var runStreamLookup = function() {
             if (!(data.retweeted_status !== undefined && data.retweeted_status.retweet_count !== undefined)) {
                 createTweetFromTwitterDataAndSave(data);
             } else {
-            
+
             if (process.env.NODE_ENV === 'development') {
                 console.log('Is a rt => not save');
             }
@@ -486,7 +488,7 @@ var runStreamLookup = function() {
 if ( config.lookupTwitterStream ) {
     runStreamLookup();
 } else {
- 
+
  if (process.env.NODE_ENV === 'development') {
     console.log('stream off : ' + config.htag);
 }
@@ -548,7 +550,12 @@ var ii = 1;
  */
 function importLoop (count, since_id) {
     console.log ('importLoop');
-    twit.search(config.htag, { count : count, since_id : since_id } ,function(data) {
+    // twit.search(config.htag, { count : count, since_id : since_id } ,function(data) {
+		//
+		// 	twit.stream('statuses/filter', {track:config.htag}, function(stream) {
+
+			twit.get('search/tweets', {q: config.htag}, function(error, data, response){
+
         //console.log(util.inspect(i++));
 
         var i;

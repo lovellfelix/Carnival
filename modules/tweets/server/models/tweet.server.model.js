@@ -35,6 +35,10 @@ var TweetSchema = new Schema({
          screen_name: { type: String, default: '', trim: true },
          profile_image_url: { type: String, default: '', trim: true }
     },
+	favorite_count: {
+		type: Number,
+		default : 0
+	},
 	extended_entities: {
 		media: { type : Array , default : [] }
 	},
@@ -53,7 +57,11 @@ var TweetSchema = new Schema({
         default: '',
         required: 'Please fill Tweet from',
         trim: true
-    }
+    },
+	favorited: {
+		type: Boolean,
+		default: false
+	}
 });
 
 
