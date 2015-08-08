@@ -85,19 +85,19 @@ a:hover .header--nav__profile-image {
 
 .navbar-twitch {
 	position: fixed;
-	top: 0px;
-	left: 0px;
+	top: 0;
+	left: 0;
 	width: 50px;
 	height: 100%;
-	border-radius: 0px;
-	border: 0px;
+	border-radius: 0;
+	border: 0;
     z-index: 1030;
 }
 .navbar-twitch.open {
 	width: 240px;
 }
 .navbar-twitch > .container {
-	padding: 0px;
+	padding: 0;
 	width: 100%;
 }
 .navbar-twitch .navbar-header,
@@ -105,14 +105,14 @@ a:hover .header--nav__profile-image {
 	float: none;
 	display: block;
 	width: 100%;
-	margin: 0px;
+	margin: 0;
 }
 .navbar-twitch .navbar-brand {
     height: 50px;
 }
 .navbar-twitch > .container .navbar-brand {
-	padding: 0px;
-	margin: 0px;
+	padding: 0;
+	margin: 0;
 }
 .navbar-twitch > .container .navbar-brand > .small-nav {
 	display: block;
@@ -143,14 +143,14 @@ a:hover .header--nav__profile-image {
 	display: none;
 }
 .navbar-twitch .navbar-collapse {
-	padding: 0px;
+	padding: 0;
 }
 .navbar-twitch .navbar-nav {
 	float: none;
-	margin: 0px;
+	margin: 0;
 }
 .navbar-twitch .navbar-nav > li > a {
-	padding: 0px;
+	padding: 0;
 }
 .navbar-twitch .navbar-nav > li > a > span {
 	display: block;
