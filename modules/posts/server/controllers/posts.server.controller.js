@@ -157,7 +157,7 @@ exports.delete = function (req, res) {
  * List of Pictures
  */
 exports.list = function (req, res) {
-    Post.find().sort('-created').populate('user', 'displayName username profileImageURL').exec(function (err, posts) {
+    Post.find().sort('-created_at').exec(function (err, posts) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
@@ -201,7 +201,7 @@ exports.uploadImage = function (req, res) {
     var pictureBuffer = req.files.file.buffer;
 
     try {
-        fs.mkdirSync(pictureSavePath);
+        fs.mkdirsSync(pictureSavePath);
     } catch (e) {
         if (e.code !== 'EEXIST') throw e;
     }

@@ -4,7 +4,8 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-	Tweet = mongoose.model('Tweet'),
+	Tweet = mongoose.model('Post'),
+	User = mongoose.model('User'),
 	_ = require('lodash'),
 	path = require('path'),
 	twitter = require('twitter'),
@@ -125,16 +126,22 @@ var twit = new twitter({
 });
 
 function createTweetFromTwitterData(data) {
+    if (process.env.NODE_ENV === 'development') {
     console.log(data);
+    }
 		var tweet = new Tweet({
 		created_at: new Date(Date.parse(data.created_at)),
 		id: data.id,
 		text: data.text,
-		user: {
+		tuser: {
 		    id: data.user.id,
 		    name: data.user.name,
 		    screen_name: data.user.screen_name,
 		    profile_image_url: data.user.profile_image_url
+		},
+		favorite_count: data.favorite_count,
+		extended_entities: {
+				media: data.extended_entities.media
 		},
 		entities: {
 		    hashtags : [],
@@ -162,6 +169,7 @@ function createTweetFromTwitterData(data) {
 	if (foundRegExFrom !== null) {
 		tweet.from = foundRegExFrom[1].toLowerCase();
         }
+	// var media = data.extended_entities.media.length;
 
 	var hashtags = data.entities.hashtags.length;
 	if (hashtags > 0) {
@@ -450,7 +458,7 @@ exports.getInformations = function(req, res) {
 
 var runStreamLookup = function() {
     twit.stream('statuses/filter', {track:config.htag}, function(stream) {
-        
+
         if (process.env.NODE_ENV === 'development') {
         console.log('start stream on : ' + config.htag);
         }
@@ -460,7 +468,7 @@ var runStreamLookup = function() {
             if (!(data.retweeted_status !== undefined && data.retweeted_status.retweet_count !== undefined)) {
                 createTweetFromTwitterDataAndSave(data);
             } else {
-            
+
             if (process.env.NODE_ENV === 'development') {
                 console.log('Is a rt => not save');
             }
@@ -480,7 +488,7 @@ var runStreamLookup = function() {
 if ( config.lookupTwitterStream ) {
     runStreamLookup();
 } else {
- 
+
  if (process.env.NODE_ENV === 'development') {
     console.log('stream off : ' + config.htag);
 }
@@ -542,7 +550,12 @@ var ii = 1;
  */
 function importLoop (count, since_id) {
     console.log ('importLoop');
-    twit.search(config.htag, { count : count, since_id : since_id } ,function(data) {
+    // twit.search(config.htag, { count : count, since_id : since_id } ,function(data) {
+		//
+		// 	twit.stream('statuses/filter', {track:config.htag}, function(stream) {
+
+			twit.get('search/tweets', {q: config.htag}, function(error, data, response){
+
         //console.log(util.inspect(i++));
 
         var i;

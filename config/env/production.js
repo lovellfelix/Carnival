@@ -3,7 +3,7 @@
 module.exports = {
 	lookupTwitterStream: true,
 	sendStats: true,
-	htag: '#spicemas',
+	htag: 'spicemas, jabjab, cropover, jouvert, caribana, mystcarnival, grenadacarnival, trinidadcarnival, miamicarnival, nottinghillcarnival',
 	dates: {
 			start: '27/07/2015 00:00:00',
 			end: '22/08/2015 00:00:00'
