@@ -20,6 +20,7 @@ module.exports = {
 				'public/lib/angular-file-upload/angular-file-upload.min.js',
 				'public/lib/angular-gravatar/build/angular-gravatar.min.js',
 				'public/lib/angular-timeago/dist/angular-timeago.min.js',
+				'public/lib/angular-img-fallback/angular.dcb-img-fallback.min.js',
 				'public/lib/ngInfiniteScroll/build/ng-infinite-scroll.min.js'
 			]
 		},
