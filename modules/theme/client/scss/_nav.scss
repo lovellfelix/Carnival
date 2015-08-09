@@ -83,7 +83,8 @@ a:hover .header--nav__profile-image {
 
 .navbar-twitch {
 	position: fixed;
-	left: 0;
+  top: 2px;
+  left: 10px;
 	width: 50px;
 	height: 100%;
 	border-radius: 0;
@@ -151,7 +152,7 @@ a:hover .header--nav__profile-image {
 }
 .navbar-twitch .navbar-nav > li > a > span {
 	display: block;
-	font-size: 16pt;
+	font-size: 18pt;
 	padding: 13px 15px 13px 12px;
 }
 .navbar-twitch .tooltip,
@@ -179,6 +180,8 @@ a:hover .header--nav__profile-image {
 .navbar-twitch.open ~ .navbar-twitch-toggle > .nav-close {
 	display: inline-block;
 }
-.navbar {
-    margin-bottom: 0 !important;
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    color: $accentColor !important;
+    background-color: transparent !important;
 }
