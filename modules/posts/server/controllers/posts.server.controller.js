@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 var _ = require('lodash'),
-    fs = require('fs'),
+    fs = require('fs-extra'),
     path = require('path'),
     async = require('async'),
     mongoose = require('mongoose'),
@@ -157,7 +157,7 @@ exports.delete = function (req, res) {
  * List of Pictures
  */
 exports.list = function (req, res) {
-    Post.find().sort('-created').populate('user', 'displayName username profileImageURL').exec(function (err, posts) {
+    Post.find().sort('-created_at').exec(function (err, posts) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
@@ -192,17 +192,16 @@ exports.uploadImage = function (req, res) {
     post.fileName = req.files.file.originalname;
 
     var pictureNameFull = req.files.file.originalname;
-    var pictureName = md5(Date.now());
-    var pictureExtension = pictureNameFull.substr(pictureNameFull.lastIndexOf('.') + 1);
-
     var user_name = req.user.username;
+    var pictureName = md5(user_name) +'_'+ md5(+Date.now() );
+    var pictureExtension = pictureNameFull.substr(pictureNameFull.lastIndexOf('.') + 1);
 
     var picturePath = './uploads/img/' + user_name+ '/';
     var pictureSavePath = './uploads/img/' + user_name+ '/';
     var pictureBuffer = req.files.file.buffer;
 
     try {
-        fs.mkdirSync(pictureSavePath);
+        fs.mkdirsSync(pictureSavePath);
     } catch (e) {
         if (e.code !== 'EEXIST') throw e;
     }

@@ -10,18 +10,14 @@ module.exports = function(app) {
 	// 	.get(tweets.list).all(tweetsPolicy.isAllowed)
 	// 	.post(tweets.create);
 
-		app.route('/api/tweets').all()
-			.get(tweets.list)
-			.post(tweets.create);
+	app.route('/api/tweets').all()
+		.get(tweets.list)
+		.post(tweets.create);
 
 	app.route('api/tweets/:tweetId')
 		.get(tweets.read)
 		.put(tweets.update)
 		.delete(tweets.delete);
-		//
-    // app.route('api/tweet')
-    //     .put(tweets.tweet)
-    //     .post(tweets.tweet);
 
     app.route('api/sendTweetFor')
         .put(tweets.sendTweetFor)
@@ -29,8 +25,9 @@ module.exports = function(app) {
 
     app.route('api/getTop')
         .get(tweets.getTop);
-    app.route('api/importOld')
-        .get(tweets.importOld);
+
+    app.route('/api/importTweets').all()
+	   .post(tweets.importOld);
 
     app.route('api/getInformations')
         .get(tweets.getInformations);
