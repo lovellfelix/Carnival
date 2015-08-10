@@ -7,7 +7,7 @@ angular.module('posts').run(['Menus',
 		Menus.addMenuItem('topbar', {
 			title: 'Stream',
 			state: 'stream',
-			icon: 'google-circles-extended',
+			icon: 'pulse',
 			position: 1,
 			isPublic: true
 		});

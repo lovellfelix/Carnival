@@ -14,13 +14,6 @@
 </div>
 <br />
 <br /> -->
-
- <!-- <div infinite-scroll="loadMoments()" infinite-scroll-distance="3">
-        <div class="col-centered" masonry preserve-order>
-            <div class="gutter-sizer"></div>
-            <div class="thumbnail masonry-brick col-lg-2 col-md-4 col-sm-12"
-                 data-ng-repeat="moment in filteredMoments | filter: {title: searchBox}"> -->
-
 <div class="row">
 				<div infinite-scroll="loadPosts()" infinite-scroll-distance="3">
 					<span data-ng-repeat="post in filteredPosts | filter: {title: searchBox}" >
@@ -52,11 +45,6 @@
                     <a href="#" target="new_blank" class="pull-right"><i class="mdi mdi-share"></i> </a>
                 </div>
 
-								<!-- card actions -->
-                <div class="card-reveal">
-                    <span class="card-title">Card Title</span> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                </div><!-- card reveal -->
             </div>
         </div>
 				</span>
@@ -64,22 +52,6 @@
 
 			</div>
 
-			<br />
-			<br />
-
-
-
-    <!-- <div class="list-group">
-        <a data-ng-repeat="post in posts" data-ng-href="/#!/posts/{{post._id}}" class="list-group-item">
-			<small class="list-group-item-text">
-				Posted on
-				<span data-ng-bind="post.created | date:'medium'"></span>
-				by
-				<span data-ng-bind="post.user.displayName"></span>
-			</small>
-			<h4 class="list-group-item-heading" data-ng-bind="post.name"></h4>
-        </a>
-    </div> -->
     <div class="alert alert-warning text-center" data-ng-hide="!posts.$resolved || posts.length">
     	No Posts yet, why don't you <a href="/#!/posts/create">create one</a>?
     </div>
