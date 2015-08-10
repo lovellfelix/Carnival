@@ -14,10 +14,10 @@
 </div>
 <br />
 <br /> -->
-<div class="row">
+<div class="row" masonry preserve-order load-images="false">
 				<div infinite-scroll="loadPosts()" infinite-scroll-distance="3">
 					<span data-ng-repeat="post in filteredPosts | filter: {title: searchBox}" >
-						 <div class="col-sm-6 col-md-4" >
+						 <div class="col-sm-6 col-md-4"  masonry-brick >
             <div class="card" >
                 <div class="card-image">
                     <img class="img-responsive" data-ng-src={{post.extended_entities.media[0].media_url}} height="376" width="600">
