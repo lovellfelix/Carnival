@@ -101,7 +101,7 @@ angular.module('posts').controller('PostsController', ['$scope',  '$state', '$st
                     if ($scope.filteredPosts.length < $scope.posts.length) {
                         var last = $scope.filteredPosts.length - 1;
 
-                        var postLimit = 4;
+                        var postLimit = 6;
                         if ($scope.posts.length - $scope.filteredPosts.length < postLimit)
                             postLimit = $scope.posts.length - $scope.filteredPosts.length;
 
