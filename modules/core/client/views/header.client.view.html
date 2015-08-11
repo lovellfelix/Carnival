@@ -12,15 +12,24 @@
 			</li>
 		</ul> -->
 
-		<div class="navbar-form navbar-right" data-ng-controller="PostsController">
 
-	<button ng-click="openUploader()"  class="btn btn-success" type="submit">
-		<i class="mdi mdi-share"></i>
-		Share</button>
+
+
+		<div class="navbar-form navbar-right" data-ng-controller="PostsController">
+		<span data-ng-show="authentication.user">
+		<button type="button" ng-click="openUploader()" class="btn btn-brand btn-circle btn-md"><i class="mdi mdi-pencil"></i></button>
+		</span>
+
+		<span data-ng-hide="authentication.user">
+			<a data-ui-sref="authentication.signin">
+			<button type="button"  class="btn btn-brand btn-circle btn-md"><i class="mdi mdi-pencil"></i></button>
+		</a>
+		</span>
+
 </div>
 
 
-		<ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
+		<!-- <ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
 
 			<li data-ui-sref-active="active">
 				<a data-ui-sref="authentication.signup">Sign Up</a>
@@ -29,8 +38,8 @@
 			<li data-ui-sref-active="active">
 				<a data-ui-sref="authentication.signin">Sign In</a>
 			</li>
-		</ul>
-		<ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
+		</ul> -->
+		<!-- <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
 			<li class="dropdown" dropdown>
 				<a class="dropdown-toggle user-header-dropdown-toggle" dropdown-toggle role="button">
 					<img data-ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}" class="header-profile-image"/>
@@ -55,7 +64,7 @@
 					</li>
 				</ul>
 			</li>
-		</ul>
+		</ul> -->
 	</nav>
 
 </div>
@@ -63,6 +72,42 @@
 
 <div class="navbar navbar-twitch" role="navigation" data-ng-controller="HeaderController">
 	<div class="container">
+		<div class="navbar-header">
+	<a class="navbar-brand" href="#">
+		<img data-ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}"  class="main-logo"/>
+		<ul class="main-logo__link">
+			<li data-ng-hide="authentication.user" >Join the fun share your experience</li>
+		</ul>
+
+		<!-- <ul class="nav" data-ng-show="authentication.user">
+			<li class="dropdown" dropdown>
+				<a class="dropdown-toggle user-header-dropdown-toggle" dropdown-toggle role="button">
+					<img data-ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}" class="header-profile-image"/>
+					<span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu" role="menu">
+					<li data-ui-sref-active="active">
+						<a data-ui-sref="settings.profile">Edit Profile</a>
+					</li>
+					<li data-ui-sref-active="active">
+						<a data-ui-sref="settings.picture">Change Profile Picture</a>
+					</li>
+					<li data-ui-sref-active="active" data-ng-show="authentication.user.provider === 'local'">
+						<a data-ui-sref="settings.password">Change Password</a>
+					</li>
+					<li data-ui-sref-active="active">
+						<a data-ui-sref="settings.accounts">Manage Social Accounts</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a href="/api/auth/signout" target="_self">Signout</a>
+					</li>
+				</ul>
+			</li>
+		</ul> -->
+
+	</a>
+</div>
 		<div class="">
 
 			<ul class="nav navbar-nav">

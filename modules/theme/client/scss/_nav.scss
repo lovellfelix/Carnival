@@ -3,24 +3,28 @@
 }
 .main-logo {
   float: left;
+  opacity: 0.8;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  margin: 14px 0 6px 6px;
 }
 .main-logo__link {
+  position: relative;
   display: block;
-  padding: 6px 6px;
-  border-radius: 2px;
+  padding: 10px 15px;
   font-size: 24px;
   font-size: 1.5rem;
+}
+.main-logo li  {
+  	padding: 0;
+
 }
 .main-logo__link img {
   display: block;
   height: 28px;
 }
-.main-nav {
-  float: right;
-}
-.main-nav ul li {
-  float: left;
-}
+
 @media screen and (max-width: 480px) {
   .main-nav--lap-and-up {
     display: none;
@@ -83,7 +87,7 @@ a:hover .header--nav__profile-image {
 
 .navbar-twitch {
 	position: fixed;
-  top: 2px;
+  top: 0;
   left: 10px;
 	width: 50px;
 	height: 100%;
