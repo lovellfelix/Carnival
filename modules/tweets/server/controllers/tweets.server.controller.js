@@ -141,12 +141,11 @@ function createTweetFromTwitterData(data) {
 		},
 		favorite_count: data.favorite_count,
 		extended_entities: {
-				media: data.extended_entities.media
+			media: []
 		},
 		entities: {
 		    hashtags : [],
 		    user_mentions :  [],
-				media: [],
 				urls: []
 		},
 		to: null,
@@ -170,6 +169,12 @@ function createTweetFromTwitterData(data) {
 		tweet.from = foundRegExFrom[1].toLowerCase();
         }
 	// var media = data.extended_entities.media.length;
+
+	if (data.extended_entities === undefined) {
+		tweet.extended_entities.media = [];
+	} else {
+		var media = data.extended_entities.media.length;
+	}
 
 	var hashtags = data.entities.hashtags.length;
 	if (hashtags > 0) {
@@ -548,33 +553,33 @@ var ii = 1;
 /*
 
  */
-function importLoop (count, since_id) {
+function importLoop (count, until) {
     console.log ('importLoop');
     // twit.search(config.htag, { count : count, since_id : since_id } ,function(data) {
 		//
-		// 	twit.stream('statuses/filter', {track:config.htag}, function(stream) {
+			twit.get('search/tweets', {q: config.oldTags, count: count, until : until }, function(error, data, response){
 
-			twit.get('search/tweets', {q: config.htag}, function(error, data, response){
-
-        //console.log(util.inspect(i++));
-
-        var i;
+        // var i;
+        //var limit = count < data.statuses.length  ? count : (data.statuses.length - 1);
+        // var min_id = null;
+        // for(i = 0; i < data.statuses.length; i++) {
+        //     console.log('ii ' + data.statuses[i].id + '  : ' + ii++);
+				var i;
         var limit = count < data.statuses.length  ? count : (data.statuses.length - 1);
         var min_id = null;
         for(i = 0; i < limit; i++) {
             console.log('ii ' + data.statuses[i].id + '  : ' + ii++);
-
             min_id = min_id !== null && min_id < data.statuses[i].id ? min_id : data.statuses[i].id;
 
             createTweetFromTwitterDataAndSave(data.statuses[i]);
         }
 
         var lastTweet = data.statuses[(data.statuses.length - 1)];
-        console.log(util.inspect(lastTweet.id));
+        //console.log(util.inspect(lastTweet.id));
         console.log(util.inspect(data.search_metadata));
 
-        if (data.search_metadata.next_results !== undefined && data.statuses.length > 0 && ii < 100) {
-            console.log('new loop after ' + lastTweet.id);
+        if (data.statuses.extended_entities === undefined || data.search_metadata.next_results !== undefined && data.statuses.length > 0 && ii < 100) {
+            console.log('new loop after ');
             console.log(util.inspect(data.search_metadata));
             importLoop(count, min_id);
         }
@@ -584,10 +589,10 @@ function importLoop (count, since_id) {
 
 exports.importOld = function(req, res) {
 
-    var importVagues = 100;
-
+    var importVagues = 500;
+		var until = '2015-08-11';
     console.log('importOld');
-    importLoop(importVagues,null);
+    importLoop(importVagues,until);
 
     res.jsonp({message:'ok'});
 
