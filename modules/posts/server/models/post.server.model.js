@@ -10,47 +10,6 @@ var mongoose = require('mongoose'),
  * Post Schema
  */
 var PostSchema = new Schema({
-	// name: {
-	// 	type: String,
-	// 	default: '',
-	// 	required: 'Please fill Post name',
-	// 	trim: true
-	// },
-	// created: {
-	// 	type: Date,
-	// 	default: Date.now
-	// },
-	// fileName: {
-	// 	type: String,
-	// 	default: '',
-	// 	required: 'fileName missing',
-	// 	trim: true
-	// },
-	// sizes: [{
-	// 	label: {
-	// 		type: String,
-	// 		default: '',
-	// 		trim: true
-	// 	},
-	// 	source: {
-	// 		type: String,
-	// 		default: '',
-	// 		trim: true
-	// 	},
-	// 	width: {
-	// 		type: Number,
-	// 		default: 0
-	// 	},
-	// 	height: {
-	// 		type: Number,
-	// 		default: 0
-	// 	}
-	// }],
-	// user: {
-	// 	type: Schema.ObjectId,
-	// 	ref: 'User'
-	// }
-
 	created_at: {
 	type: Date,
 	default: Date.now
@@ -76,25 +35,31 @@ var PostSchema = new Schema({
 				 screen_name: { type: String, default: '', trim: true },
 				 profile_image_url: { type: String, default: '', trim: true }
 		},
+	favorite_count: {
+		type: Number,
+		default : 0
+	},
 	extended_entities: {
 		media: { type : Array , default : [] }
 	},
-	entities: {
+  entities: {
 	hashtags : { type : Array , default : [] },
 	urls : { type : Array , default : [] },
 	user_mentions :  { type : Array , default : [] }
-		},
-		to: {
-				type: String,
-				default: null,
-				trim: true
-		},
-		from: {
-				type: String,
-				default: '',
-				required: 'Please fill Tweet from',
-				trim: true
-		}
+    },
+    to: {
+        type: String,
+        default: null,
+        trim: true
+    },
+	favorited: {
+		type: Boolean,
+		default: false
+	},
+	postedBy: {
+    type: Schema.ObjectId,
+    ref: 'User'
+	}
 
 });
 

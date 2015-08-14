@@ -35,6 +35,30 @@ if (process.env.NODE_ENV === 'production') {
       console.log('Admin user exists');
     }
   });
+
+  //Add bot User
+  User.find({username: 'robot'}).remove(function () {
+    var password = crypto.randomBytes(64).toString('hex').slice(1, 20);
+    var user = new User({
+      username: 'robot',
+      password: password,
+      provider: 'local',
+      email: 'robot@carnivalagain.com',
+      firstName: 'User',
+      lastName: 'Local',
+      displayName: 'User Local',
+      roles: ['user']
+    });
+    // Then save the user
+    user.save(function (err) {
+      if (err) {
+        console.log('Failed to add robot user');
+      } else {
+        console.log(chalk.bold.red('Local robot added with password set to ' + password));
+      }
+    });
+  });
+
 } else {
   //Add Local User
   User.find({username: 'user'}).remove(function () {
