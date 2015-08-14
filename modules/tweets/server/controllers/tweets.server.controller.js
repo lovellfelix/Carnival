@@ -137,7 +137,7 @@ function createTweetFromTwitterData(data) {
 		    id: data.user.id,
 		    name: data.user.name,
 		    screen_name: data.user.screen_name,
-		    profile_image_url: data.user.profile_image_url
+		    profile_image_url: data.user.profile_image_url_https
 		},
 		favorite_count: data.favorite_count,
 		extended_entities: {
