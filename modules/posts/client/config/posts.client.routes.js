@@ -5,7 +5,7 @@ angular.module('posts').config(['$stateProvider',
 	function($stateProvider) {
 		// Posts state routing
 		$stateProvider.
-		state('stream', {
+		state('home', {
 			url: '/',
 			templateUrl: 'modules/posts/views/stream.client.view.html'
 		}).
