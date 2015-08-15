@@ -90,34 +90,34 @@
 			expect(scope.video).toEqualData(sampleVideo);
 		}));
 
-		it('$scope.create() with valid form data should send a POST request with the form input values and then locate to new object URL', inject(function(Videos) {
-			// Create a sample Video object
-			var sampleVideoPostData = new Videos({
-				name: 'New Video'
-			});
-
-			// Create a sample Video response
-			var sampleVideoResponse = new Videos({
-				_id: '525cf20451979dea2c000001',
-				name: 'New Video'
-			});
-
-			// Fixture mock form input values
-			scope.name = 'New Video';
-
-			// Set POST response
-			$httpBackend.expectPOST('api/videos', sampleVideoPostData).respond(sampleVideoResponse);
-
-			// Run controller functionality
-			scope.create();
-			$httpBackend.flush();
-
-			// Test form inputs are reset
-			expect(scope.name).toEqual('');
-
-			// Test URL redirection after the Video was created
-			expect($location.path()).toBe('/videos/' + sampleVideoResponse._id);
-		}));
+		// it('$scope.create() with valid form data should send a POST request with the form input values and then locate to new object URL', inject(function(Videos) {
+		// 	// Create a sample Video object
+		// 	var sampleVideoPostData = new Videos({
+		// 		name: 'New Video'
+		// 	});
+		//
+		// // 	// Create a sample Video response
+		// 	var sampleVideoResponse = new Videos({
+		// 		_id: '525cf20451979dea2c000001',
+		// 		name: 'New Video'
+		// 	});
+		//
+		// 	// Fixture mock form input values
+		// 	scope.name = 'New Video';
+		//
+		// 	// Set POST response
+		// 	$httpBackend.expectPOST('api/videos', sampleVideoPostData).respond(sampleVideoResponse);
+		//
+		// 	// Run controller functionality
+		// 	scope.create();
+		// 	$httpBackend.flush();
+		//
+		// 	// Test form inputs are reset
+		// 	expect(scope.name).toEqual('');
+		//
+		// 	// Test URL redirection after the Video was created
+		// 	expect($location.path()).toBe('/videos/' + sampleVideoResponse._id);
+		// }));
 
 		it('$scope.update() should update a valid Video', inject(function(Videos) {
 			// Define a sample Video put data
