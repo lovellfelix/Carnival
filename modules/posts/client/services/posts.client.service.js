@@ -16,4 +16,4 @@ angular
     twemojiProvider.setOptions({
 				size: '16x16'
     });
-});;
+});
