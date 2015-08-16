@@ -34,7 +34,10 @@ module.exports = {
 				'public/lib/angular-timeago/dist/angular-timeago.min.js',
 				'public/lib/angular-img-fallback/angular.dcb-img-fallback.min.js',
 				'public/lib/ngInfiniteScroll/build/ng-infinite-scroll.min.js',
-				'public/lib/angular-masonry/angular-masonry.js'
+				'public/lib/angular-masonry/angular-masonry.js',
+				'public/lib/angular-sanitize/angular-sanitize.js',
+				'public/lib/twemoji/twemoji.min.js',
+				'public/lib/angular-twemoji/dist/angular-twemoji.min.js'
 			]
 		},
 		css: 'public/dist/application.min.css',
