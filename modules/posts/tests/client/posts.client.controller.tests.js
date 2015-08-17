@@ -90,34 +90,34 @@
 			expect(scope.post).toEqualData(samplePost);
 		}));
 
-		it('$scope.create() with valid form data should send a POST request with the form input values and then locate to new object URL', inject(function(Posts) {
-			// Create a sample Post object
-			var samplePostPostData = new Posts({
-				name: 'New Post'
-			});
-
-			// Create a sample Post response
-			var samplePostResponse = new Posts({
-				_id: '525cf20451979dea2c000001',
-				name: 'New Post'
-			});
-
-			// Fixture mock form input values
-			scope.name = 'New Post';
-
-			// Set POST response
-			$httpBackend.expectPOST('api/posts', samplePostPostData).respond(samplePostResponse);
-
-			// Run controller functionality
-			scope.create();
-			$httpBackend.flush();
-
-			// Test form inputs are reset
-			expect(scope.name).toEqual('');
-
-			// Test URL redirection after the Post was created
-			expect($location.path()).toBe('/posts/' + samplePostResponse._id);
-		}));
+		// it('$scope.create() with valid form data should send a POST request with the form input values and then locate to new object URL', inject(function(Posts) {
+		// 	// Create a sample Post object
+		// 	var samplePostPostData = new Posts({
+		// 		name: 'New Post'
+		// 	});
+		//
+		// 	// Create a sample Post response
+		// 	var samplePostResponse = new Posts({
+		// 		_id: '525cf20451979dea2c000001',
+		// 		name: 'New Post'
+		// 	});
+		//
+		// 	// Fixture mock form input values
+		// 	scope.name = 'New Post';
+		//
+		// 	// Set POST response
+		// 	$httpBackend.expectPOST('api/posts', samplePostPostData).respond(samplePostResponse);
+		//
+		// 	// Run controller functionality
+		// 	scope.create();
+		// 	$httpBackend.flush();
+		//
+		// 	// Test form inputs are reset
+		// 	expect(scope.name).toEqual('');
+		//
+		// 	// Test URL redirection after the Post was created
+		// 	expect($location.path()).toBe('/posts/' + samplePostResponse._id);
+		// }));
 
 		it('$scope.update() should update a valid Post', inject(function(Posts) {
 			// Define a sample Post put data

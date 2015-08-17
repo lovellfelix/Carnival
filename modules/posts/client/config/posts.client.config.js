@@ -6,7 +6,7 @@ angular.module('posts').run(['Menus',
 		// Add the Posts dropdown item
 		Menus.addMenuItem('topbar', {
 			title: 'Stream',
-			state: 'stream',
+			state: 'home',
 			icon: 'pulse',
 			position: 1,
 			isPublic: true

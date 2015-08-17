@@ -90,34 +90,34 @@
 			expect(scope.tweet).toEqualData(sampleTweet);
 		}));
 
-		it('$scope.create() with valid form data should send a POST request with the form input values and then locate to new object URL', inject(function(Tweets) {
-			// Create a sample Tweet object
-			var sampleTweetPostData = new Tweets({
-				name: 'New Tweet'
-			});
-
-			// Create a sample Tweet response
-			var sampleTweetResponse = new Tweets({
-				_id: '525cf20451979dea2c000001',
-				name: 'New Tweet'
-			});
-
-			// Fixture mock form input values
-			scope.name = 'New Tweet';
-
-			// Set POST response
-			$httpBackend.expectPOST('api/tweets', sampleTweetPostData).respond(sampleTweetResponse);
-
-			// Run controller functionality
-			scope.create();
-			$httpBackend.flush();
-
-			// Test form inputs are reset
-			expect(scope.name).toEqual('');
-
-			// Test URL redirection after the Tweet was created
-			expect($location.path()).toBe('/tweets/' + sampleTweetResponse._id);
-		}));
+		// it('$scope.create() with valid form data should send a POST request with the form input values and then locate to new object URL', inject(function(Tweets) {
+		// 	// Create a sample Tweet object
+		// 	var sampleTweetPostData = new Tweets({
+		// 		name: 'New Tweet'
+		// 	});
+		//
+		// 	// Create a sample Tweet response
+		// 	var sampleTweetResponse = new Tweets({
+		// 		_id: '525cf20451979dea2c000001',
+		// 		name: 'New Tweet'
+		// 	});
+		//
+		// 	// Fixture mock form input values
+		// 	scope.name = 'New Tweet';
+		//
+		// 	// Set POST response
+		// 	$httpBackend.expectPOST('api/tweets', sampleTweetPostData).respond(sampleTweetResponse);
+		//
+		// 	// Run controller functionality
+		// 	scope.create();
+		// 	$httpBackend.flush();
+		//
+		// 	// Test form inputs are reset
+		// 	expect(scope.name).toEqual('');
+		//
+		// 	// Test URL redirection after the Tweet was created
+		// 	expect($location.path()).toBe('/tweets/' + sampleTweetResponse._id);
+		// }));
 
 		it('$scope.update() should update a valid Tweet', inject(function(Tweets) {
 			// Define a sample Tweet put data
