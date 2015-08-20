@@ -34,7 +34,10 @@ module.exports = {
 				'public/lib/angular-timeago/dist/angular-timeago.js',
         'public/lib/angular-img-fallback/angular.dcb-img-fallback.js',
 				'public/lib/ngInfiniteScroll/build/ng-infinite-scroll.js',
-        'public/lib/angular-masonry/angular-masonry.js'
+        'public/lib/angular-masonry/angular-masonry.js',
+        'public/lib/angular-sanitize/angular-sanitize.js',
+        'public/lib/twemoji/twemoji.js',
+        'public/lib/angular-twemoji/dist/angular-twemoji.js'
 			],
       tests: ['public/lib/angular-mocks/angular-mocks.js']
     },

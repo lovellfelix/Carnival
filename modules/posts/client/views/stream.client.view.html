@@ -38,7 +38,7 @@
 	<span class="text-muted" data-ng-bind="post.tuser.screen_name"></span>
 </div>
 </div>
-								<p class="" data-ng-bind="post.text">...</p>
+            <p data-ng-bind-html="post.text | twemoji"></p>
 								<button type="button" id="show" class="btn btn-custom pull-right" aria-label="Left Align">
 										<i class="fa fa-ellipsis-v"></i>
 								</button>
