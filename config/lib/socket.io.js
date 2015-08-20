@@ -15,10 +15,10 @@ var config = require('../config'),
 // Define the Socket.io configuration method
 module.exports = function (app, db) {
   var server;
-  if (config.secure === true) {
+  if (config.secure && config.secure.ssl === true) {
     // Load SSL key and certificate
-    var privateKey = fs.readFileSync('./config/sslcerts/key.pem', 'utf8');
-    var certificate = fs.readFileSync('./config/sslcerts/cert.pem', 'utf8');
+    var privateKey = fs.readFileSync(path.resolve(config.secure.privateKey), 'utf8');
+    var certificate = fs.readFileSync(path.resolve(config.secure.certificate), 'utf8');
     var options = {
       key: privateKey,
       cert: certificate,
@@ -71,10 +71,15 @@ module.exports = function (app, db) {
     // Use the 'cookie-parser' module to parse the request cookies
     cookieParser(config.sessionSecret)(socket.request, {}, function (err) {
       // Get the session id from the request cookies
-      var sessionId = socket.request.signedCookies['connect.sid'];
+      var sessionId = socket.request.signedCookies ? socket.request.signedCookies[config.sessionKey] : undefined;
+
+      if (!sessionId) return next(new Error('sessionId was not found in socket.request'), false);
 
       // Use the mongoStorage instance to get the Express session information
       mongoStore.get(sessionId, function (err, session) {
+        if (err) return next(err, false);
+        if (!session) return next(new Error('session was not found for ' + sessionId), false);
+
         // Set the Socket.io session information
         socket.request.session = session;
 

@@ -1,14 +1,11 @@
 'use strict';
 
 module.exports = {
-	lookupTwitterStream: true,
-	sendStats: true,
-	htag: 'spicemas, jabjab, cropover, jouvert, caribana, mystcarnival, grenadacarnival, trinidadcarnival, miamicarnival, nottinghillcarnival',
-	dates: {
-			start: '27/07/2015 00:00:00',
-			end: '22/08/2015 00:00:00'
-	},
-	secure: true,
+	secure: {
+    ssl: true,
+    privateKey: './config/sslcerts/key.pem',
+    certificate: './config/sslcerts/cert.pem'
+  },
 	port: process.env.PORT || 8443,
 	db: {
 		uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/carnival',
@@ -71,5 +68,12 @@ module.exports = {
 			}
 		}
 	},
-	seedDB: process.env.MONGO_SEED || false
+	seedDB: process.env.MONGO_SEED || false,
+	lookupTwitterStream: true,
+	sendStats: true,
+	htag: 'spicemas, jabjab, cropover, jouvert, caribana, mystcarnival, grenadacarnival, trinidadcarnival, miamicarnival, nottinghillcarnival',
+	dates: {
+			start: '27/07/2015 00:00:00',
+			end: '22/08/2015 00:00:00'
+	}
 };
