@@ -129,18 +129,6 @@ function createTweetFromTwitterData(data) {
     if (process.env.NODE_ENV === 'development') {
     console.log(data);
     }
-
-		var robot = '';
-
-		User.find({username: 'robot'}, function (err, users) {
-		if (users.length === 0) {
-			console.log('User doesnt exists');
-			} else {
-			var robot = users.robot_id;
-
-			}
-		});
-
 		var tweet = new Tweet({
 		created_at: new Date(Date.parse(data.created_at)),
 		id: data.id,
@@ -153,14 +141,15 @@ function createTweetFromTwitterData(data) {
 		},
 		favorite_count: data.favorite_count,
 		extended_entities: {
-			media: data.extended_entities.media
+			media: []
 		},
 		entities: {
 		    hashtags : [],
 		    user_mentions :  [],
 				urls: []
 		},
-		postedBy: robot,
+		to: null,
+		from: data.user.screen_name
 	});
 
 	tweet.dateTime = moment(tweet.created_at).format('DD-MM-YYYY HH:mm:ss');
@@ -180,12 +169,12 @@ function createTweetFromTwitterData(data) {
 		tweet.from = foundRegExFrom[1].toLowerCase();
         }
 	// var media = data.extended_entities.media.length;
-	//
-	// if (data.extended_entities === undefined) {
-	// 	tweet.extended_entities.media = [];
-	// } else {
-	// 	tweet.extended_entities.media;
-	// }
+
+	if (data.extended_entities === undefined) {
+		tweet.extended_entities.media = [];
+	} else {
+		var media = data.extended_entities.media.length;
+	}
 
 	var hashtags = data.entities.hashtags.length;
 	if (hashtags > 0) {
@@ -601,7 +590,7 @@ function importLoop (count, until) {
 exports.importOld = function(req, res) {
 
     var importVagues = 500;
-		var until = '2015-08-07';
+		var until = '2015-08-11';
     console.log('importOld');
     importLoop(importVagues,until);
 
