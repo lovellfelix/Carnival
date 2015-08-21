@@ -125,21 +125,42 @@ var twit = new twitter({
     access_token_secret: config.twitter.access_token_secret
 });
 
+
 function createTweetFromTwitterData(data) {
     if (process.env.NODE_ENV === 'development') {
-    console.log(data);
+    //console.log(data);
     }
 
-		var robot = '';
+		var robotUserId;
+		function retrieveUser(uname, callback) {
+		  User.find({username: uname}, function(err, users) {
+		    if (err) {
+		      callback(err, null);
+		    } else {
+		      callback(null, users[0]);
+		    }
+		  });
+		}
 
-		User.find({username: 'robot'}, function (err, users) {
-		if (users.length === 0) {
-			console.log('User doesnt exists');
-			} else {
-			var robot = users.robot_id;
+		function robotUser() {
+			var user;
+			retrieveUser('robot', function(err, user) {
+				if (err) {
+					console.log(err);
+				}
+				// do something with user
+				//console.log(user._id);
+				user = user;
+			});
+			return user;
+		}
 
-			}
-		});
+		//var getUser = retrieveUser('robot', {});
+		// var getUser = robotUser();
+
+		// robotUser();
+
+		console.log(robotUser());
 
 		var tweet = new Tweet({
 		created_at: new Date(Date.parse(data.created_at)),
@@ -153,14 +174,15 @@ function createTweetFromTwitterData(data) {
 		},
 		favorite_count: data.favorite_count,
 		extended_entities: {
-			media: data.extended_entities.media
+			media: []
+			//media: data.extended_entities.media
 		},
 		entities: {
 		    hashtags : [],
 		    user_mentions :  [],
 				urls: []
 		},
-		postedBy: robot,
+		postedBy: '55d54dc981a02a192abe7f3e'
 	});
 
 	tweet.dateTime = moment(tweet.created_at).format('DD-MM-YYYY HH:mm:ss');
@@ -179,7 +201,7 @@ function createTweetFromTwitterData(data) {
 	if (foundRegExFrom !== null) {
 		tweet.from = foundRegExFrom[1].toLowerCase();
         }
-	// var media = data.extended_entities.media.length;
+	var media = data.extended_entities.media.length;
 	//
 	// if (data.extended_entities === undefined) {
 	// 	tweet.extended_entities.media = [];
@@ -205,7 +227,7 @@ function createTweetFromTwitterDataAndSave(data) {
 	var tweet = createTweetFromTwitterData(data);
 	tweet.save(function(err) {
 		if (err) {
-		    //console.log(getErrorMessage(err));
+		    console.log(getErrorMessage(err));
 		    toReturn.reject(null);
 		} else {
 		    console.log('TweetSave');
