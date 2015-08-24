@@ -125,10 +125,31 @@ var twit = new twitter({
     access_token_secret: config.twitter.access_token_secret
 });
 
+	var users = {};
+	function getUser(username, callback) {
+	    if (typeof users[username] !== 'undefined') {
+	        callback(users[username]);
+	    } else {
+	        User.findOne({"username":username}, function(err, user) {
+	            users[username] = user;
+	            callback(user);
+	        });
+	    }
+	}
+
 function createTweetFromTwitterData(data) {
     if (process.env.NODE_ENV === 'development') {
     console.log(data);
     }
+
+		var robot;
+
+		getUser('robot', function(user) {
+			robot = user._id;
+		});
+
+		console.log(robot);
+
 		var tweet = new Tweet({
 		created_at: new Date(Date.parse(data.created_at)),
 		id: data.id,
@@ -141,15 +162,14 @@ function createTweetFromTwitterData(data) {
 		},
 		favorite_count: data.favorite_count,
 		extended_entities: {
-			media: []
+			media: data.extended_entities.media
 		},
 		entities: {
 		    hashtags : [],
 		    user_mentions :  [],
 				urls: []
 		},
-		to: null,
-		from: data.user.screen_name
+		postedBy: robot
 	});
 
 	tweet.dateTime = moment(tweet.created_at).format('DD-MM-YYYY HH:mm:ss');
@@ -159,7 +179,7 @@ function createTweetFromTwitterData(data) {
 
 	if (foundRegExTo !== null) {
 		tweet.to = foundRegExTo[1].toLowerCase();
-        }
+    }
 
 
 	var regExFrom = /from ([a-zA-z]+)$/i;
@@ -167,14 +187,16 @@ function createTweetFromTwitterData(data) {
 
 	if (foundRegExFrom !== null) {
 		tweet.from = foundRegExFrom[1].toLowerCase();
-        }
-	// var media = data.extended_entities.media.length;
+    }
+	var media = data.extended_entities.media.length;
+	//
+	// if (data.extended_entities === undefined) {
+	// 	tweet.extended_entities.media = [];
+	// } else {
+	// 	tweet.extended_entities.media;
+	// }
 
-	if (data.extended_entities === undefined) {
-		tweet.extended_entities.media = [];
-	} else {
-		var media = data.extended_entities.media.length;
-	}
+
 
 	var hashtags = data.entities.hashtags.length;
 	if (hashtags > 0) {
@@ -188,13 +210,15 @@ function createTweetFromTwitterData(data) {
 
 	return tweet;
 }
+
+
 function createTweetFromTwitterDataAndSave(data) {
 
 	var toReturn = Q.defer();
 	var tweet = createTweetFromTwitterData(data);
 	tweet.save(function(err) {
 		if (err) {
-		    //console.log(getErrorMessage(err));
+		    console.log(getErrorMessage(err));
 		    toReturn.reject(null);
 		} else {
 		    console.log('TweetSave');
@@ -470,7 +494,7 @@ var runStreamLookup = function() {
 
         stream.on('data', function(data) {
             console.log('@' + data.user.screen_name + ' : ' + data.user.name);
-            if (!(data.retweeted_status !== undefined && data.retweeted_status.retweet_count !== undefined)) {
+            if (data.extended_entities.media !== undefined && !(data.retweeted_status !== undefined && data.retweeted_status.retweet_count !== undefined)) {
                 createTweetFromTwitterDataAndSave(data);
             } else {
 
@@ -486,7 +510,7 @@ var runStreamLookup = function() {
             runStreamLookup();
         });
         stream.on('error', function(error) {
-            console.log('error', error);
+            //console.log('error', error);
         });
     });
 };
@@ -590,7 +614,7 @@ function importLoop (count, until) {
 exports.importOld = function(req, res) {
 
     var importVagues = 500;
-		var until = '2015-08-11';
+		var until = '2015-08-07';
     console.log('importOld');
     importLoop(importVagues,until);
 
