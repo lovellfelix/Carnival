@@ -16,7 +16,7 @@ module.exports = {
 	sessionSecret: 'itscarnivalagain',
 	// sessionKey is set to the generic sessionId key used by PHP applications
 	// for obsecurity reasons
-	sess  sessionKey: 'sessionId',
+	  sessionKey: 'sessionId',
 	  sessionCollection: 'sessions',
 	  logo: 'modules/core/client/img/brand/logo.png',
 	  favicon: 'modules/core/client/img/brand/favicon.ico'
