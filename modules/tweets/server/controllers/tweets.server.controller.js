@@ -125,42 +125,30 @@ var twit = new twitter({
     access_token_secret: config.twitter.access_token_secret
 });
 
+	var users = {};
+	function getUser(username, callback) {
+	    if (typeof users[username] !== 'undefined') {
+	        callback(users[username]);
+	    } else {
+	        User.findOne({"username":username}, function(err, user) {
+	            users[username] = user;
+	            callback(user);
+	        });
+	    }
+	}
 
 function createTweetFromTwitterData(data) {
     if (process.env.NODE_ENV === 'development') {
-    //console.log(data);
+    console.log(data);
     }
 
-		var robotUserId;
-		function retrieveUser(uname, callback) {
-		  User.find({username: uname}, function(err, users) {
-		    if (err) {
-		      callback(err, null);
-		    } else {
-		      callback(null, users[0]);
-		    }
-		  });
-		}
+		var robot;
 
-		function robotUser() {
-			var user;
-			retrieveUser('robot', function(err, user) {
-				if (err) {
-					console.log(err);
-				}
-				// do something with user
-				//console.log(user._id);
-				user = user;
-			});
-			return user;
-		}
+		getUser('robot', function(user) {
+			robot = user._id;
+		});
 
-		//var getUser = retrieveUser('robot', {});
-		// var getUser = robotUser();
-
-		// robotUser();
-
-		console.log(robotUser());
+		console.log(robot);
 
 		var tweet = new Tweet({
 		created_at: new Date(Date.parse(data.created_at)),
@@ -174,15 +162,14 @@ function createTweetFromTwitterData(data) {
 		},
 		favorite_count: data.favorite_count,
 		extended_entities: {
-			media: []
-			//media: data.extended_entities.media
+			media: data.extended_entities.media
 		},
 		entities: {
 		    hashtags : [],
 		    user_mentions :  [],
 				urls: []
 		},
-		postedBy: '55d54dc981a02a192abe7f3e'
+		postedBy: robot
 	});
 
 	tweet.dateTime = moment(tweet.created_at).format('DD-MM-YYYY HH:mm:ss');
@@ -192,7 +179,7 @@ function createTweetFromTwitterData(data) {
 
 	if (foundRegExTo !== null) {
 		tweet.to = foundRegExTo[1].toLowerCase();
-        }
+    }
 
 
 	var regExFrom = /from ([a-zA-z]+)$/i;
@@ -200,7 +187,7 @@ function createTweetFromTwitterData(data) {
 
 	if (foundRegExFrom !== null) {
 		tweet.from = foundRegExFrom[1].toLowerCase();
-        }
+    }
 	var media = data.extended_entities.media.length;
 	//
 	// if (data.extended_entities === undefined) {
@@ -208,6 +195,8 @@ function createTweetFromTwitterData(data) {
 	// } else {
 	// 	tweet.extended_entities.media;
 	// }
+
+
 
 	var hashtags = data.entities.hashtags.length;
 	if (hashtags > 0) {
@@ -221,6 +210,8 @@ function createTweetFromTwitterData(data) {
 
 	return tweet;
 }
+
+
 function createTweetFromTwitterDataAndSave(data) {
 
 	var toReturn = Q.defer();
@@ -503,7 +494,7 @@ var runStreamLookup = function() {
 
         stream.on('data', function(data) {
             console.log('@' + data.user.screen_name + ' : ' + data.user.name);
-            if (!(data.retweeted_status !== undefined && data.retweeted_status.retweet_count !== undefined)) {
+            if (data.extended_entities.media !== undefined && !(data.retweeted_status !== undefined && data.retweeted_status.retweet_count !== undefined)) {
                 createTweetFromTwitterDataAndSave(data);
             } else {
 
@@ -519,7 +510,7 @@ var runStreamLookup = function() {
             runStreamLookup();
         });
         stream.on('error', function(error) {
-            console.log('error', error);
+            //console.log('error', error);
         });
     });
 };
