@@ -4,7 +4,7 @@
 var ApplicationConfiguration = (function() {
 	// Init module configuration options
 	var applicationModuleName = 'mean';
-	var applicationModuleVendorDependencies = ['ngResource', 'ngAnimate', 'ui.router', 'ui.bootstrap', 'ui.utils', 'angularFileUpload', 'ui.gravatar',
+	var applicationModuleVendorDependencies = ['ngResource', 'ngAnimate', 'ngMessages', 'ui.router', 'ui.bootstrap', 'ui.utils', 'angularFileUpload', 'ui.gravatar',
 	 																           'yaru22.angular-timeago', 'infinite-scroll', 'ngMaterial', 'dcbImgFallback',
 																					   'wu.masonry', 'ngSanitize', 'sc.twemoji'];
 
