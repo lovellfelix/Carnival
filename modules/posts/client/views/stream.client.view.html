@@ -15,13 +15,18 @@
 <br />
 <br /> -->
 
+<!-- <span data-ng-click="openViewer(news.thumbnail[1], news.title)"> <img data-ng-show="news.thumbnail !== null" ng-src="{{news.thumbnail[1]}}" height="220" width="360" alt="..."> -->
+
+
 <div infinite-scroll="loadPosts()" infinite-scroll-distance="3">
 		<div class="col-centered" masonry preserve-order masonry-options="{ transitionDuration: 0 }">
 
 			<div class="gutter-sizer"></div>
 			<div class="masonry-brick col-sm-6 col-md-4"
 					 data-ng-repeat="post in filteredPosts | filter: {title: searchBox}">
+
 				<div class="card" >
+					<span data-ng-click="openViewer(post.extended_entities.media[0].media_url_https, post.text)">
 						<div class="card-image">
 								<img class="img-responsive" data-ng-src={{post.extended_entities.media[0].media_url_https}} height="376" width="600">
 						</div>
@@ -47,7 +52,7 @@
 								<a href="#" target="new_blank" ><i class="mdi mdi-heart-outline"></i> 10</a>
 								<a href="#" target="new_blank" class="pull-right"><i class="mdi mdi-share"></i> </a>
 						</div>
-
+					</span>
 				</div>
 		</div>
 
