@@ -38,7 +38,9 @@ module.exports = {
 				'public/lib/angular-masonry/angular-masonry.js',
 				'public/lib/angular-sanitize/angular-sanitize.js',
 				'public/lib/twemoji/twemoji.min.js',
-				'public/lib/angular-twemoji/dist/angular-twemoji.min.js'
+				'public/lib/angular-twemoji/dist/angular-twemoji.min.js',
+				'public/lib/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.min.js'
+
 			]
 		},
 		css: 'public/dist/application.min.css',

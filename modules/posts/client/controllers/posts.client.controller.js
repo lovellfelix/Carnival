@@ -1,11 +1,20 @@
 'use strict';
 
 // Posts controller
-angular.module('posts').controller('PostsController', ['$scope',  '$state', '$stateParams', '$location', 'Authentication', 'Posts', '$modal', 'FileUploader',
-	function($scope, $state, $stateParams, $location, Authentication, Posts, $modal, FileUploader) {
+angular.module('posts').controller('PostsController', ['$scope',  '$state', '$stateParams', '$location', 'Authentication', 'Posts', '$modal', 'FileUploader', 'Lightbox',
+	function($scope, $state, $stateParams, $location, Authentication, Posts, $modal, FileUploader, Lightbox) {
 		$scope.authentication = Authentication;
     $scope.loading = false;
 		$scope.filteredPosts = [];
+
+		// Open Image in LightBox
+		$scope.openViewer = function (photo, title) {
+				var photos = [{
+						'url': photo,
+						'caption': title
+				}];
+				Lightbox.openModal(photos, 0);
+		};
 
 		// Create file uploader instance
 		$scope.uploader = new FileUploader({
