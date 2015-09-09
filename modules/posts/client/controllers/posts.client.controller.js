@@ -151,12 +151,12 @@ angular.module('posts').controller('PostsController', ['$scope',  '$state', '$st
 		// Remove existing Post
 		$scope.remove = function( post ) {
 			if ( post ) { post.$remove();
-
 				for (var i in $scope.posts ) {
 					if ($scope.posts [i] === post ) {
 						$scope.posts.splice(i, 1);
 					}
 				}
+				//$state.reload();
 			} else {
 				$scope.post.$remove(function() {
 					$location.path('posts');

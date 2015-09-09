@@ -12,7 +12,7 @@ module.exports = function(app) {
 	app.route('/api/posts/:postId').all(postsPolicy.isAllowed)
 	  .get(posts.read)
 	  .put(posts.update)
-	  .delete(posts.delete);
+	  .delete(posts._delete);
 
 	// Finish by binding the Post middleware
 	app.param('postId', posts.postByID);
