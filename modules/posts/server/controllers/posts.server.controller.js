@@ -101,6 +101,23 @@ exports.update = function (req, res) {
 };
 
 /**
+ * Delete an News
+ */
+exports._delete = function(req, res) {
+	var post = req.post;
+
+	post.remove(function(err) {
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			res.jsonp(post);
+		}
+	});
+};
+
+/**
  * Delete an Picture
  */
 exports.delete = function (req, res) {

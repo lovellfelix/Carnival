@@ -52,7 +52,17 @@
 								<a href="#" target="new_blank" ><i class="mdi mdi-heart-outline"></i> 10</a>
 								<a href="#" target="new_blank" class="pull-right"><i class="mdi mdi-share"></i> </a>
 						</div>
-					</span>
+</span>
+						<div class="pull-right" data-ng-controller="PostsController"
+	 data-ng-show="((authentication.user) && (authentication.user.username == 'lovell'))">
+
+	<a class="btn btn-primary" data-ng-click="remove(post)">
+		<i class="glyphicon glyphicon-trash"></i>
+	</a>
+</div>
+
+
+
 				</div>
 		</div>
 
