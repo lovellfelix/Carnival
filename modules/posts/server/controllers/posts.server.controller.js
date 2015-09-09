@@ -104,7 +104,7 @@ exports.update = function (req, res) {
  * Delete an News
  */
 exports._delete = function(req, res) {
-	var post = req.post;;
+	var post = req.post;
 
 	post.remove(function(err) {
 		if (err) {
