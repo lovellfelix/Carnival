@@ -28,7 +28,7 @@ describe('User CRUD tests', function () {
     // Create user credentials
     credentials = {
       username: 'username',
-      password: 'password'
+      password: 'M3@n.jsI$Aw3$0m3'
     };
 
     // Create a new user
@@ -58,7 +58,7 @@ describe('User CRUD tests', function () {
           return done(signinErr);
         }
 
-        // Save a new article
+        // Request list of users
         agent.get('/api/users')
           .expect(403)
           .end(function (usersGetErr, usersGetRes) {
@@ -84,7 +84,7 @@ describe('User CRUD tests', function () {
             return done(signinErr);
           }
 
-          // Save a new article
+          // Request list of users
           agent.get('/api/users')
             .expect(200)
             .end(function (usersGetErr, usersGetRes) {
