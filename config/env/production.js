@@ -71,7 +71,7 @@ module.exports = {
 	seedDB: process.env.MONGO_SEED || false,
 	lookupTwitterStream: true,
 	sendStats: true,
-	htag: 'spicemas, jabjab, cropover, jouvert, caribana, mystcarnival, grenadacarnival, trinidadcarnival, miamicarnival, nottinghillcarnival, bostoncarnival, nycarnival, dallascarnival',
+	htag: 'spicemas, jabjab, cropover, jouvert, caribana, mystcarnival, grenadacarnival, trinidadcarnival, tntcarnival, miamicarnival, nottinghillcarnival, bostoncarnival, nycarnival, dallascarnival',
 	dates: {
 			start: '27/07/2015 00:00:00',
 			end: '22/08/2015 00:00:00'
