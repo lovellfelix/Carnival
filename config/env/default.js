@@ -1,15 +1,15 @@
 'use strict';
 
 module.exports = {
-	app: {
-		title: 'Its Carnival Time Again',
-		description: '',
-		keywords: '',
-		googleAnalyticsTrackingID: process.env.GOOGLE_ANALYTICS_TRACKING_ID || 'GOOGLE_ANALYTICS_TRACKING_ID'
-	},
-	port: process.env.PORT || 3000,
-	templateEngine: 'swig',
-	// Session Cookie settings
+  app: {
+    title: 'Its Carnival Time Again',
+    description: '',
+    keywords: '',
+    googleAnalyticsTrackingID: process.env.GOOGLE_ANALYTICS_TRACKING_ID || 'GOOGLE_ANALYTICS_TRACKING_ID'
+  },
+  port: process.env.PORT || 3000,
+  templateEngine: 'swig',
+  // Session Cookie settings
   sessionCookie: {
     // session expiration is set by default to 24 hours
     maxAge: 24 * (60 * 60 * 1000),
@@ -33,7 +33,7 @@ module.exports = {
     profileUpload: {
       dest: './modules/users/client/img/profile/uploads/', // Profile upload destination path
       limits: {
-        fileSize: 1*1024*1024 // Max file size in bytes (1 MB)
+        fileSize: 1 * 1024 * 1024 // Max file size in bytes (1 MB)
       }
     }
   }

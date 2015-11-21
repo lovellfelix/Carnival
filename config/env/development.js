@@ -3,14 +3,14 @@
 var defaultEnvConfig = require('./default');
 
 module.exports = {
-	lookupTwitterStream: true,
-	sendStats: true,
-	htag: '#spicemas',
-	dates: {
-			start: '27/07/2015 00:00:00',
-			end: '22/08/2015 00:00:00'
-	},
-	  db: {
+  lookupTwitterStream: true,
+  sendStats: true,
+  htag: '#spicemas',
+  dates: {
+    start: '27/07/2015 00:00:00',
+    end: '22/08/2015 00:00:00'
+  },
+  db: {
     uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/mean-dev',
     options: {
       user: '',
@@ -30,7 +30,7 @@ module.exports = {
       //  directoryPath: process.cwd(),
       //  fileName: 'access.log',
       //  rotatingLogs: { // for more info on rotating logs - https://github.com/holidayextras/file-stream-rotator#usage
-      //    active: false, // activate to use rotating logs 
+      //    active: false, // activate to use rotating logs
       //    fileName: 'access-%DATE%.log', // if rotating logs are active, this fileName setting will be used
       //    frequency: 'daily',
       //    verbose: false

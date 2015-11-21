@@ -2,18 +2,19 @@
 
 //Posts service used to communicate Posts REST endpoints
 angular
-	.module('posts').factory('Posts', ['$resource',
-	function($resource) {
-		return $resource('api/posts/:postId', { postId: '@_id'
-		}, {
-			update: {
-				method: 'PUT'
-			}
-		});
-	}
-])
-.config(function (twemojiProvider) {
+  .module('posts').factory('Posts', ['$resource',
+    function($resource) {
+      return $resource('api/posts/:postId', {
+        postId: '@_id'
+      }, {
+        update: {
+          method: 'PUT'
+        }
+      });
+    }
+  ])
+  .config(function(twemojiProvider) {
     twemojiProvider.setOptions({
-				size: '16x16'
+      size: '16x16'
     });
-});
+  });

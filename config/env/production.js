@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	secure: {
+  secure: {
     ssl: true,
     privateKey: './config/sslcerts/key.pem',
     certificate: './config/sslcerts/cert.pem'
@@ -76,13 +76,13 @@ module.exports = {
       }
     }
   },
-	lookupTwitterStream: true,
-	sendStats: true,
-	htag: 'spicemas, jabjab, cropover, jouvert, caribana, mystcarnival, grenadacarnival, trinidadcarnival, tntcarnival, miamicarnival, nottinghillcarnival, bostoncarnival, nycarnival, dallascarnival',
-	dates: {
-			start: '27/07/2015 00:00:00',
-			end: '22/08/2015 00:00:00'
-	},
+  lookupTwitterStream: true,
+  sendStats: true,
+  htag: 'spicemas, jabjab, cropover, jouvert, caribana, mystcarnival, grenadacarnival, trinidadcarnival, tntcarnival, miamicarnival, nottinghillcarnival, bostoncarnival, nycarnival, dallascarnival',
+  dates: {
+    start: '27/07/2015 00:00:00',
+    end: '22/08/2015 00:00:00'
+  },
   seedDB: {
     seed: process.env.MONGO_SEED === 'true' ? true : false,
     options: {
